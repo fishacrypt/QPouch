@@ -31,12 +31,124 @@
   .btn.sm{padding:8px 14px;font-size:14px}
 
   /* hero */
-  .hero{padding:clamp(40px,8vw,64px) clamp(16px,4vw,24px) clamp(36px,6vw,52px);text-align:center}
   .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:12px}
   h1{font-size:clamp(38px,6.5vw,68px);line-height:1.04;letter-spacing:-.035em;font-weight:800;max-width:760px;margin:0 auto 14px}
   .sub{font-size:clamp(15px,2vw,17px);color:var(--muted);max-width:560px;margin:0 auto 22px}
   .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   .meta{margin-top:14px;font-size:13px;color:var(--muted)}
+
+
+  /* hero + panel */
+  .top{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:16px;padding-bottom:20px;align-items:start}
+  .hero{align-self:start;padding:clamp(16px,4vw,52px) 0 clamp(8px,2vw,16px);text-align:left}
+  .hero h1{font-size:clamp(34px,4.8vw,54px);margin:0 0 14px;max-width:none}
+  .hero .sub{margin:0 0 22px;max-width:480px}
+  .hero .cta{justify-content:flex-start}
+  .panel{position:relative;overflow:hidden;border-radius:18px;background:#F4F4F4;color:var(--ink);padding:clamp(12px,2.4vw,18px)}
+  .gshapes{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .panel-in{position:relative;z-index:1}
+  .panel .dd{background:#fff}
+  .panel .grid{grid-template-columns:1fr}
+  .final{margin-top:18px;padding:14px 4px 4px;border-top:1px solid var(--line)}
+  .final h2{font-size:clamp(22px,2.8vw,28px);margin:0 0 6px}
+  .final p{font-size:14px;color:var(--muted);margin:0 0 14px;max-width:420px}
+  @media(max-width:860px){
+    .top{grid-template-columns:1fr}
+    .hero{text-align:center}
+    .hero .sub{margin-left:auto;margin-right:auto}
+    .hero .cta{justify-content:center}
+  }
+
+
+
+  /* QMS Pulse */
+  .pgap{margin-bottom:12px}
+  .dout:empty{display:none}
+  .plabel{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--muted);margin:0 0 8px}
+  .live{width:8px;height:8px;border-radius:50%;background:var(--ink);animation:plive 1.8s ease-in-out infinite}
+  @keyframes plive{50%{opacity:.2}}
+  @media(prefers-reduced-motion:reduce){.live{animation:none}}
+  .pstrip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+  .pcell{padding:12px 16px;border-right:1px solid var(--line);min-width:0}
+  .pcell:last-child{border-right:0}
+  .pcell .tag{display:flex;align-items:center;gap:7px;margin-bottom:2px}
+  .pcell b{display:block;font-size:clamp(16px,2.2vw,20px);letter-spacing:-.02em;line-height:1.25;overflow-wrap:anywhere}
+  .pcell small{display:block;font-size:12.5px;color:var(--muted);min-height:1.3em;overflow-wrap:anywhere}
+  .sd{display:inline-block;width:9px;height:9px;border-radius:50%;border:2px solid var(--ink);background:#fff;flex:none}
+  .pcell[data-k=ok] .sd{background:var(--ink)}
+  .pcell[data-k=warn] .sd{background:linear-gradient(90deg,var(--ink) 50%,#fff 50%)}
+  .pcell[data-k=bad] .sd{background:var(--ink);border-radius:2px}
+  .ptabs{display:flex;gap:2px;margin:16px 0 14px;border-bottom:1px solid var(--line);overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .ptabs button{font:600 14px/1 inherit;font-family:inherit;background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:11px 14px;color:var(--muted);cursor:pointer;white-space:nowrap}
+  .ptabs button:hover{color:var(--ink)}
+  .ptabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--ink)}
+  .ptabs button:focus-visible{outline:2px solid var(--ink);outline-offset:-2px;border-radius:6px}
+  .ppanel[hidden]{display:none}
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  .pgrid>.dcard{display:flex;flex-direction:column;gap:12px}
+  .pgrid>.dcard h3{margin-bottom:0}
+  .pgrid .tiles{grid-template-columns:repeat(4,1fr)}
+  .pgrid .tile{padding:10px 12px}
+  .pgrid .tile b{font-size:clamp(15px,1.9vw,19px)}
+  .pfoot{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .pfoot .hint{margin:0}
+  .pnote{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+  .spark{display:flex;align-items:flex-end;gap:3px;height:84px;position:relative}
+  .spark i{flex:1;background:var(--ink);border-radius:2px 2px 0 0;min-height:3px}
+  .spark i.bad,.spark i.slow{background:#fff;border:1.5px solid var(--ink);border-bottom:0}
+  .tline{position:absolute;left:0;right:0;border-top:1.5px dashed #9a9a9a;pointer-events:none}
+  .tline span{position:absolute;right:0;top:-17px;font-size:11px;color:var(--muted);background:#fff;padding:0 4px}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:9px 16px;font-size:13.5px}
+  .kv dt{color:var(--muted)}
+  .kv dd{text-align:right;overflow-wrap:anywhere;font-weight:600}
+  .kv dd a{text-decoration:underline;text-underline-offset:2px}
+  .verdict{display:flex;gap:6px 12px;align-items:baseline;flex-wrap:wrap;border:1.5px solid var(--ink);border-radius:12px;padding:12px 16px}
+  .verdict b{font-size:19px;letter-spacing:-.015em}
+  .verdict span{font-size:14px;opacity:.85}
+  .verdict.bad{background:var(--ink);color:#fff}
+  .verdict.warn,.verdict.wait{border-style:dashed}
+  .checks{list-style:none;display:grid;gap:9px}
+  .checks li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.4}
+  .ck{flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;border:1.5px solid var(--ink);margin-top:1px}
+  .ck.no{background:var(--ink);color:#fff}
+  .ck.warn{border-style:dashed}
+  .ck.info{border-color:#bdbdbd;color:var(--muted)}
+  .why p{font-size:14px;color:var(--ink);margin-bottom:8px;overflow-wrap:anywhere}
+  .why p:last-child{margin-bottom:0}
+  .why p.m{color:var(--muted);font-size:13.5px}
+  .pacts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .pacts .btn,.dcard .btn.sm{padding:7px 13px;font-size:13.5px}
+  .lrow .btn.sm{flex:none}
+  .lrow .btn{margin-left:8px}
+  .mini{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border:1px solid var(--ink);border-radius:6px;padding:0 6px;margin-left:6px;vertical-align:1px}
+  .mini.bad{background:var(--ink);color:#fff}
+  @media(max-width:820px){.pgrid{grid-template-columns:1fr}}
+  @media(max-width:640px){
+    .pstrip{grid-template-columns:1fr 1fr}
+    .pcell:nth-child(2){border-right:0}
+    .pcell:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .pgrid .tiles{grid-template-columns:1fr 1fr}
+    .kv{grid-template-columns:1fr}
+    .kv dd{text-align:left;margin-bottom:4px}
+  }
+
+  /* games */
+  .gpanel{position:relative;overflow:hidden;border-radius:18px;background:var(--teal);color:#fff;padding:clamp(16px,3.4vw,28px)}
+  .gin{position:relative;z-index:1}
+  .geye{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.82);margin-bottom:8px}
+  .ghead h2{font-size:clamp(24px,3.6vw,34px);max-width:560px;margin-bottom:16px}
+  .ggrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .gcard{background:#fff;color:var(--ink);border-radius:14px;padding:clamp(14px,2.6vw,20px);display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+  .gcard h3{font-size:18px;letter-spacing:-.01em}
+  .gcard p{font-size:14px;color:var(--muted);flex:1}
+  .gtags{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+  .gtags li{border:1px solid var(--line);border-radius:8px;padding:2px 9px;font-size:12.5px;font-weight:600}
+  .gmodal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:12px;z-index:60}
+  .gmodal[hidden]{display:none}
+  .gbox{position:relative;width:min(520px,100%);height:min(860px,100%);background:#000;border-radius:14px;overflow:hidden}
+  .gbox iframe{display:block;width:100%;height:100%;border:0;background:#fff}
+  .gclose{position:absolute;top:8px;left:8px;z-index:2;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#111;font-size:22px;line-height:1;cursor:pointer}
+  @media(max-width:640px){.ggrid{grid-template-columns:1fr}}
 
   /* sections */
   section{padding:clamp(32px,5vw,44px) 0;border-top:1px solid var(--line)}
@@ -55,9 +167,6 @@
   .step p{font-size:14.5px;color:var(--muted)}
   code{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--ink)}
 
-  .final{text-align:center}
-  .final h2{margin:0 auto 8px}
-  .final p{color:var(--muted);margin:0 auto 18px;max-width:520px}
 
   footer{border-top:1px solid var(--line);padding:18px 0 0;font-size:13px;color:var(--muted);background:#fafafa;overflow:hidden}
   footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -107,7 +216,6 @@
   .log li span.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--muted)}
 
   /* dropdowns */
-  section.drops{padding:clamp(20px,3.5vw,28px) 0}
   .dd{border:1px solid var(--line);border-radius:14px;background:#fff}
   .dd+.dd{margin-top:10px}
   .dd summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px}
@@ -189,39 +297,6 @@
   .dmore a{text-decoration:underline;text-underline-offset:2px;font-weight:600}
   @media(max-width:760px){.dcols{grid-template-columns:1fr}}
   @media(max-width:520px){.dform .btn{padding:12px 16px}.tiles{grid-template-columns:1fr 1fr}}
-
-  /* dashboard tabs + QMS Pulse */
-  .dtabs{display:inline-flex;gap:4px;border:1px solid var(--line);border-radius:12px;padding:4px;background:var(--soft);margin-top:12px}
-  .dtabs button{font:600 14px/1 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:9px;cursor:pointer}
-  .dtabs button:hover{color:var(--ink)}
-  .dtabs button[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 0 0 1px var(--line)}
-  .dtabs button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-  .pdsub{margin-bottom:12px}
-  .pbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
-  .pbar .pill{margin-left:0}
-  .pbar .pill i{background:var(--teal)}
-  .pinsp,#pincl{margin-top:12px}
-  .pinsp .dform{margin-top:2px}
-  .pupd{font-size:12.5px;color:var(--muted)}
-  #pane-pulse .dout{margin-top:0}
-  #pane-pulse .dout+.dcard,#pane-pulse .dcard+.dcard,#pane-pulse .dout+.dout{margin-top:12px}
-  #pane-pulse .dcols>.dcard{margin-top:0}
-  #pextra{margin-top:12px}
-  .st.good{color:var(--teal);border-color:var(--teal)}
-  .bars i.f{background:repeating-linear-gradient(135deg,var(--line) 0 3px,#fff 3px 6px);outline:1px solid var(--line);outline-offset:-1px}
-  .finds{list-style:none;display:grid;gap:8px;margin-top:8px}
-  .finds li{font-size:14px;position:relative;padding-left:16px;overflow-wrap:anywhere}
-  .finds li::before{content:"–";position:absolute;left:0;color:var(--muted)}
-  .kv{display:grid;grid-template-columns:minmax(96px,150px) 1fr;gap:8px 14px;font-size:13.5px}
-  .kv dt{color:var(--muted)}
-  .kv dd{font-weight:600;overflow-wrap:anywhere;min-width:0}
-  .kv dd a{text-decoration:underline;text-underline-offset:2px}
-  button.lrow{width:100%;background:none;border:0;border-top:1px solid var(--line);font:inherit;color:inherit;text-align:left;cursor:pointer}
-  button.lrow:first-of-type{border-top:0}
-  button.lrow:hover .l1{text-decoration:underline;text-underline-offset:2px}
-  .linkbtn{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:2px;cursor:pointer;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
-  .linkbtn:focus-visible,button.lrow:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-  @media(max-width:520px){.kv{grid-template-columns:1fr;gap:2px}.kv dd{margin-bottom:8px}.dtabs{display:flex}.dtabs button{flex:1}}
 </style>
 </head>
 <body>
@@ -249,7 +324,8 @@
 </header>
 
 <main id="top">
-  <div class="wrap hero">
+  <div class="wrap top">
+    <div class="hero">
     <p class="eyebrow">Community wallet · QMS Testnet</p>
     <h1>Your keys. Your <span class="teal">QPouch</span>.</h1>
     <p class="sub">A self-custody browser wallet for the QMS Testnet. Encrypted on your device, connects to dApps in a click.</p>
@@ -261,6 +337,38 @@
       <a class="btn ghost" href="#install">How to install</a>
     </div>
     <p class="meta">v0.3.0 · Chrome, Brave, Edge &amp; other Chromium browsers · Unofficial, testnet only</p>
+    </div>
+    <aside class="panel">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><path id="pad" fill-rule="evenodd" d="M-45 -28C-62 -28 -72 4 -70 30C-69 44 -58 47 -50 36L-40 22H40L50 36C58 47 69 44 70 30C72 4 62 -28 45 -28Z M-46 -12h8v8h8v8h-8v8h-8v-8h-8v-8h8z M34 -12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0z M44 -2a4 4 0 1 0 8 0a4 4 0 1 0 -8 0z M34 8a4 4 0 1 0 8 0a4 4 0 1 0 -8 0z M24 -2a4 4 0 1 0 8 0a4 4 0 1 0 -8 0z M-20 8a6 6 0 1 0 12 0a6 6 0 1 0 -12 0z M8 8a6 6 0 1 0 12 0a6 6 0 1 0 -12 0z"/></defs></svg>
+      <div class="panel-in">
+      <details class="dd" id="features">
+        <summary><span><span class="eyebrow">Features</span><span class="dd-h">Everything you need, nothing you don't.</span></span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="dd-body">
+          <div class="grid">
+            <div class="card"><p class="tag">Self-custody</p><h3>Your keys stay yours</h3><p>Keys are encrypted on your device. Nobody else holds them.</p></div>
+            <div class="card"><p class="tag">dApps</p><h3>Connects in a click</h3><p>Choose QPouch or the injected wallet option on any dApp.</p></div>
+            <div class="card"><p class="tag">Network</p><h3>Built for QMS Testnet</h3><p>Supports QMS Testnet (chain 19480). Create a wallet or import one.</p></div>
+          </div>
+        </div>
+      </details>
+      <details class="dd" id="install">
+        <summary><span><span class="eyebrow">Install</span><span class="dd-h">Four steps to get running.</span></span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="dd-body">
+          <div class="steps">
+            <div class="step"><span class="num">01</span><div><h3>Download the file</h3><p>Click Download to save the <code>.zip</code> to your computer.</p></div></div>
+            <div class="step"><span class="num">02</span><div><h3>Unzip it</h3><p>Extract the zip into a folder you'll keep. Don't delete it after installing.</p></div></div>
+            <div class="step"><span class="num">03</span><div><h3>Open extensions page</h3><p>Go to <code>chrome://extensions</code> and switch on <b>Developer mode</b> in the top right.</p></div></div>
+            <div class="step"><span class="num">04</span><div><h3>Load unpacked</h3><p>Click <b>Load unpacked</b>, select the folder containing <code>manifest.json</code>, then pin QPouch from the puzzle icon.</p></div></div>
+          </div>
+        </div>
+      </details>
+        <div class="final">
+          <h2>Ready when you are.</h2>
+          <p>Free. Unofficial and not independently audited. Do not use with real funds.</p>
+          <button class="btn primary" id="video" type="button" aria-haspopup="dialog">Video guide</button>
+        </div>
+      </div>
+    </aside>
   </div>
 
   <section id="try">
@@ -288,14 +396,26 @@
       <div class="dhead">
         <p class="eyebrow">Dashboard</p>
         <h2>QMS Testnet Dashboard</h2>
-        <div class="dtabs" role="tablist" aria-label="Dashboard view">
-          <button type="button" role="tab" id="tab-wallet" aria-selected="true" aria-controls="pane-wallet">Wallet</button>
-          <button type="button" role="tab" id="tab-pulse" aria-selected="false" aria-controls="pane-pulse" tabindex="-1">QMS Pulse</button>
-        </div>
+        <p class="dsub">Check a wallet, watch the network, and find out why a transaction failed. Live from QMS Testnet.</p>
       </div>
 
-      <div id="pane-wallet" role="tabpanel" aria-labelledby="tab-wallet">
-        <p class="dsub pdsub">Paste a wallet address to see its balance, tokens and what it has been doing on QMS Testnet.</p>
+      <p class="plabel"><span class="live" aria-hidden="true"></span>QMS Pulse · live network</p>
+      <div class="pstrip" id="pstrip" aria-live="off">
+        <div class="pcell" id="pc-rpc" data-k="wait"><p class="tag"><i class="sd"></i>RPC</p><b>Checking…</b><small>&nbsp;</small></div>
+        <div class="pcell" id="pc-blk" data-k="wait"><p class="tag"><i class="sd"></i>Latest block</p><b>–</b><small>&nbsp;</small></div>
+        <div class="pcell" id="pc-bt" data-k="wait"><p class="tag"><i class="sd"></i>Block time</p><b>–</b><small>&nbsp;</small></div>
+        <div class="pcell" id="pc-ex" data-k="wait"><p class="tag"><i class="sd"></i>Explorer</p><b>–</b><small>&nbsp;</small></div>
+      </div>
+
+      <div class="ptabs" role="tablist" aria-label="Dashboard views">
+        <button type="button" role="tab" id="tab-wallet" data-tab="wallet" aria-selected="true" aria-controls="pp-wallet">Wallet</button>
+        <button type="button" role="tab" id="tab-network" data-tab="network" aria-selected="false" aria-controls="pp-network" tabindex="-1">Network</button>
+        <button type="button" role="tab" id="tab-diagnose" data-tab="diagnose" aria-selected="false" aria-controls="pp-diagnose" tabindex="-1">Diagnose</button>
+        <button type="button" role="tab" id="tab-apps" data-tab="apps" aria-selected="false" aria-controls="pp-apps" tabindex="-1">Apps</button>
+      </div>
+
+      <div class="ppanel" id="pp-wallet" role="tabpanel" aria-labelledby="tab-wallet">
+        <p class="dsub pgap">Paste a wallet address to see its balance, tokens and what it has been doing.</p>
         <form class="dform" id="dform" autocomplete="off">
           <input id="daddr" type="text" inputmode="text" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Paste wallet address (0x…)" aria-label="Wallet address">
           <button class="btn primary" id="dgo" type="submit">View</button>
@@ -304,68 +424,81 @@
         <div class="dout" id="dout" hidden></div>
       </div>
 
-      <div id="pane-pulse" role="tabpanel" aria-labelledby="tab-pulse" hidden>
-        <p class="dsub pdsub">QMS Pulse puts the network's vital signs in one place: RPC speed, block production, and what happened to your transactions and contracts.</p>
-        <div class="pbar">
-          <button class="pill on" id="plive" type="button" aria-pressed="true"><i></i>Live</button>
-          <button class="btn ghost sm" id="prefresh" type="button">Refresh now</button>
-        </div>
-        <div class="dout" id="plivebox"><p class="dempty">Starting…</p></div>
+      <div class="ppanel" id="pp-network" role="tabpanel" aria-labelledby="tab-network" hidden>
+        <div class="pgrid"><div class="dcard" id="n-rpc"></div><div class="dcard" id="n-blk"></div></div>
+        <div class="pgrid"><div class="dcard" id="n-fee"></div><div class="dcard" id="n-recent"></div></div>
+        <div class="pfoot"><button class="btn ghost sm" id="n-copy" type="button">Copy snapshot</button><span class="hint">Measured from your browser, so your own connection is part of the numbers.</span></div>
+      </div>
 
-        <div class="dcard pinsp">
-          <h3>Inspect a transaction or contract <small>did it work, and why not?</small></h3>
-          <form class="dform" id="pform" autocomplete="off">
-            <input id="pq" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Transaction hash or contract address (0x…)" aria-label="Transaction hash or contract address">
-            <button class="btn primary" id="pgo" type="submit">Inspect</button>
-          </form>
-          <p class="hint" id="pmsg" role="status"></p>
-          <div class="dout" id="pout" hidden></div>
-        </div>
+      <div class="ppanel" id="pp-diagnose" role="tabpanel" aria-labelledby="tab-diagnose" hidden>
+        <p class="dsub pgap">Paste a transaction hash to see whether it really succeeded, and why it didn't if it failed.</p>
+        <form class="dform" id="d-form" autocomplete="off">
+          <input id="d-in" type="text" inputmode="text" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Paste transaction hash (0x…)" aria-label="Transaction hash">
+          <button class="btn primary" id="d-go" type="submit">Diagnose</button>
+        </form>
+        <p class="hint" id="d-msg" role="status"></p>
+        <div class="dout" id="d-out" hidden></div>
+        <div class="dout" id="d-sent"></div>
+      </div>
 
-        <div class="dcard" id="pincl"></div>
-        <div class="dout" id="pextra"></div>
+      <div class="ppanel" id="pp-apps" role="tabpanel" aria-labelledby="tab-apps" hidden>
+        <p class="dsub pgap">Paste a contract address to check it is deployed and how it has been behaving.</p>
+        <form class="dform" id="a-form" autocomplete="off">
+          <input id="a-in" type="text" inputmode="text" spellcheck="false" autocapitalize="off" autocorrect="off" placeholder="Paste contract address (0x…)" aria-label="Contract address">
+          <button class="btn primary" id="a-go" type="submit">Check</button>
+        </form>
+        <p class="hint" id="a-msg" role="status"></p>
+        <div class="dout" id="a-out" hidden></div>
+        <div class="dout" id="a-sites"></div>
       </div>
     </div>
   </section>
 
-  <section class="drops">
+  <section id="games">
     <div class="wrap">
-      <details class="dd" id="features">
-        <summary><span><span class="eyebrow">Features</span><span class="dd-h">Everything you need, nothing you don't.</span></span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="dd-body">
-          <div class="grid">
-            <div class="card"><p class="tag">Self-custody</p><h3>Your keys stay yours</h3><p>Keys are encrypted on your device. Nobody else holds them.</p></div>
-            <div class="card"><p class="tag">dApps</p><h3>Connects in a click</h3><p>Choose QPouch or the injected wallet option on any dApp.</p></div>
-            <div class="card"><p class="tag">Network</p><h3>Built for QMS Testnet</h3><p>Supports QMS Testnet (chain 19480). Create a wallet or import one.</p></div>
+      <div class="gpanel">
+      <svg class="gshapes" viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+        <use href="#pad" transform="translate(842 292) rotate(-14) scale(3.2)" fill="#000" opacity=".14"/>
+        <use href="#pad" transform="translate(830 278) rotate(-14) scale(3.2)" fill="#fff" opacity=".18"/>
+        <g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".2">
+          <circle cx="92" cy="86" r="24"/>
+          <path d="M470 40l24 42h-48z"/>
+          <path d="M70 300l36 36m0-36l-36 36"/>
+          <rect x="640" y="300" width="42" height="42" rx="5"/>
+          <path d="M300 300h22v22h22v22h-22v22h-22v-22h-22v-22h22z" transform="rotate(10 300 340)"/>
+          <circle cx="930" cy="80" r="32"/><circle cx="930" cy="80" r="11"/>
+        </g>
+        <g fill="#000" opacity=".1"><circle cx="190" cy="200" r="5"/><circle cx="560" cy="120" r="5"/><circle cx="760" cy="60" r="4"/><circle cx="400" cy="380" r="4"/></g>
+      </svg>
+        <div class="gin">
+          <div class="ghead"><p class="geye">Games</p><h2>Play while you wait for the next block.</h2></div>
+          <div class="ggrid">
+            <article class="gcard">
+              <h3>Qpouch Rush</h3>
+              <p>A 30-second reaction game. Pop floating Qpouch characters, chain combos and beat your best.</p>
+              <ul class="gtags"><li>30 s</li><li>Combos</li><li>Personal best</li></ul>
+              <button class="btn primary" type="button" data-game="games/rush/index.html" data-title="Qpouch Rush">Play</button>
+            </article>
+            <article class="gcard">
+              <h3>Qpouch Mind Rush</h3>
+              <p>Find the numbers 1 to 50 in order on a circular board. Pick Classic, Hardcore, Zen or Daily.</p>
+              <ul class="gtags"><li>4 modes</li><li>Daily board</li><li>Personal best</li></ul>
+              <button class="btn primary" type="button" data-game="games/mind/index.html" data-title="Qpouch Mind Rush">Play</button>
+            </article>
           </div>
         </div>
-      </details>
-      <details class="dd" id="install">
-        <summary><span><span class="eyebrow">Install</span><span class="dd-h">Four steps to get running.</span></span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="dd-body">
-          <div class="steps">
-            <div class="step"><span class="num">01</span><div><h3>Download the file</h3><p>Click Download to save the <code>.zip</code> to your computer.</p></div></div>
-            <div class="step"><span class="num">02</span><div><h3>Unzip it</h3><p>Extract the zip into a folder you'll keep. Don't delete it after installing.</p></div></div>
-            <div class="step"><span class="num">03</span><div><h3>Open extensions page</h3><p>Go to <code>chrome://extensions</code> and switch on <b>Developer mode</b> in the top right.</p></div></div>
-            <div class="step"><span class="num">04</span><div><h3>Load unpacked</h3><p>Click <b>Load unpacked</b>, select the folder containing <code>manifest.json</code>, then pin QPouch from the puzzle icon.</p></div></div>
-          </div>
-        </div>
-      </details>
+      </div>
     </div>
   </section>
 
-  <section class="final">
-    <div class="wrap">
-      <h2>Ready when you are.</h2>
-      <p>Free. Unofficial and not independently audited. Do not use with real funds.</p>
-      <button class="btn primary" id="video" type="button" aria-haspopup="dialog">Video guide</button>
-    </div>
-  </section>
+
+  
+
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© QPouch. Unofficial community project.</span>
+    <span>© QPouch. Unofficial community project. Built by fishacrypt.</span>
     <nav class="write">Write us:
       <a href="https://github.com/fishacrypt" target="_blank" rel="noopener" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 015.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.51 11.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
       <a href="https://x.com/fishacrypt" target="_blank" rel="noopener" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
@@ -459,11 +592,11 @@
   }
 
   async function receipt(p,hash){
-    for(let i=0;i<40;i++){
+    for(let i=0;i<80;i++){
       let r=null;
       try{r=await p.request({method:"eth_getTransactionReceipt",params:[hash]})}catch(e){}
       if(r)return r;
-      await sleep(4000);
+      await sleep(i<30?2000:4000);
     }
     return null;
   }
@@ -489,9 +622,10 @@
         ?{from,to:from,value:"0x0",data:toHex("GM from QPouch")}
         :{from,value:"0x0",data:BYTECODE};
       const hash=await p.request({method:"eth_sendTransaction",params:[tx]});
-      dispatchEvent(new CustomEvent("qpouch:sent",{detail:{hash,t0:Date.now(),kind}}));
       say("Sent. Waiting for the next block (about 10 seconds)…");
+      const t0=Date.now();dispatchEvent(new CustomEvent("pulse:sent",{detail:{hash,kind,sentAt:t0}}));
       const r=await receipt(p,hash);
+      dispatchEvent(new CustomEvent("pulse:done",{detail:{hash,doneAt:Date.now(),status:r?(r.status==="0x0"?"failed":"ok"):"pending",block:r?parseInt(r.blockNumber,16):null,timedOut:!r}}));
       if(!r){say("Sent, but not confirmed yet. Check it on the explorer.");addLog(kind==="gm"?"GM sent (pending)":"Deploy sent (pending)",hash);return}
       if(r.status==="0x0"){say("The transaction failed on-chain.",true);addLog(kind==="gm"?"GM failed":"Deploy failed",hash);return}
       if(kind==="gm"){say("GM! Your transaction is confirmed. ☀️");addLog("GM sent",hash);dispatchEvent(new CustomEvent("qpouch:tx",{detail:from}))}
@@ -710,6 +844,7 @@
       if(bits.length)kids.push(h("div","dnet",h("span",null,"Network now:"),bits.map(([k,v])=>h("span",null,k+" ",h("b",null,v)))));
     }
     out.replaceChildren(...kids);out.hidden=false;
+    dispatchEvent(new CustomEvent("pulse:wallet",{detail:{addr:d.addr,items:items,me:me}}));
   }
 
   form.addEventListener("submit",e=>{
@@ -731,16 +866,38 @@
 })();
 </script>
 <script>
+  (function(){function o(){var e=document.querySelector(location.hash||"x");if(e&&e.tagName==="DETAILS"){e.open=true;e.scrollIntoView({block:"nearest"})}}
+  addEventListener("hashchange",o);document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest('a[href="#install"],a[href="#features"]');if(a){var d=document.querySelector(a.getAttribute("href"));if(d){d.open=true}}});o()})();
+</script>
+<div class="gmodal" id="gmodal" hidden role="dialog" aria-modal="true" aria-label="Game">
+  <div class="gbox">
+    <button class="gclose" id="gclose" type="button" aria-label="Close game">&times;</button>
+    <iframe id="gframe" title="Game" allow="clipboard-write; fullscreen" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+  </div>
+</div>
+<script>
+  (function(){
+    var m=document.getElementById("gmodal"),f=document.getElementById("gframe"),c=document.getElementById("gclose");
+    function close(){m.hidden=true;f.src="about:blank";document.body.style.overflow=""}
+    document.querySelectorAll("[data-game]").forEach(function(b){b.addEventListener("click",function(){
+      f.title=b.getAttribute("data-title");m.setAttribute("aria-label",f.title);f.src=b.getAttribute("data-game");m.hidden=false;document.body.style.overflow="hidden";c.focus()})});
+    c.addEventListener("click",close);
+    m.addEventListener("click",function(e){if(e.target===m)close()});
+    addEventListener("keydown",function(e){if(e.key==="Escape"&&!m.hidden)close()});
+  })();
+</script>
+<script>
 (()=>{
-  const RPC="https://rpc.testnet.qms.finance",API="https://testnet.qmsscan.io/api/v2",SCAN="https://testnet.qmsscan.io",CHAIN="0x4c18";
+  /* QMS Pulse: network observability for QMS Testnet */
+  const API="https://testnet.qmsscan.io/api/v2",SCAN="https://testnet.qmsscan.io",RPC="https://rpc.testnet.qms.finance",FAUCET="https://faucet.testnet.qms.finance",QWAP="https://testnet.qwap.xyz";
+  const TARGET=10;
   const $=id=>document.getElementById(id);
   const ADDR=/^0x[0-9a-fA-F]{40}$/,HASH=/^0x[0-9a-fA-F]{64}$/;
   const h=(t,c,...k)=>{const e=document.createElement(t);if(c)e.className=c;for(const x of k.flat())if(x!=null&&x!==false)e.append(x.nodeType?x:document.createTextNode(String(x)));return e};
-  const link=(href,text,cls)=>{const a=h("a",cls,text);a.href=href;a.target="_blank";a.rel="noopener";return a};
-  const short=a=>a?a.slice(0,6)+"…"+a.slice(-4):"";
+  const link=(href,text)=>{const a=h("a",null,text);a.href=href;a.target="_blank";a.rel="noopener";return a};
+  const short=a=>a?a.slice(0,8)+"…"+a.slice(-6):"";
   const big=v=>{try{return BigInt(v==null?"0":v)}catch(e){return 0n}};
-  const num=x=>x==null?null:parseInt(x,16);
-  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  const num=v=>v==null?null:(typeof v==="string"&&v.startsWith("0x")?parseInt(v,16):Number(v));
   function units(v,dec=18,max=4){
     let n=big(v);const d=Number(dec)||0,neg=n<0n;if(neg)n=-n;
     const p=10n**BigInt(d),w=n/p;
@@ -748,517 +905,487 @@
     if(n>0n&&w===0n&&!f)return "<0."+"0".repeat(Math.max(max-1,0))+"1";
     return (neg?"-":"")+w.toLocaleString("en-US")+(f?"."+f:"");
   }
-  const gwei=v=>units(v,9,3)+" gwei";
-  const ago=ms=>{const s=Math.max(0,ms/1000);if(s<5)return "just now";if(s<60)return Math.floor(s)+"s ago";if(s<3600)return Math.floor(s/60)+"m ago";if(s<86400)return Math.floor(s/3600)+"h ago";return Math.floor(s/86400)+"d ago"};
-  const fmtMs=ms=>ms==null?"–":(ms<1000?Math.round(ms)+" ms":(ms/1000).toFixed(1)+" s");
-  const fmtS=s=>s==null?"–":(s<10?s.toFixed(1)+" s":Math.round(s)+" s");
-  const median=a=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2};
-  const pctile=(a,p)=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y);return s[Math.min(s.length-1,Math.ceil(p*s.length)-1)]};
+  const ms=v=>v==null?"–":(v<1000?Math.round(v)+" ms":(v/1000).toFixed(1)+" s");
+  const secs=v=>v==null?"–":(v<60?Math.round(v)+"s":(v<3600?Math.floor(v/60)+"m "+Math.round(v%60)+"s":Math.floor(v/3600)+"h "+Math.floor(v%3600/60)+"m"));
+  const pct=(a,b)=>b?Math.round(a/b*100)+"%":"–";
+  const med=a=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2};
+  const p95=a=>{if(!a.length)return null;const s=[...a].sort((x,y)=>x-y);return s[Math.min(s.length-1,Math.ceil(s.length*.95)-1)]};
   const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
-  const pl=(n,w)=>n+" "+w+(n===1?"":"s");
-
-  /* ---------- network access ---------- */
-  async function rpcCall(method,params,timeout=8000){
-    const c=new AbortController(),t=setTimeout(()=>c.abort(),timeout);
-    try{
-      const r=await fetch(RPC,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({jsonrpc:"2.0",id:1,method,params}),signal:c.signal});
-      if(!r.ok){const e=new Error("HTTP "+r.status);e.http=r.status;throw e}
-      const j=await r.json();
-      if(j.error){const e=new Error(j.error.message||"RPC error");e.rpc=true;e.code=j.error.code;e.data=j.error.data;throw e}
-      return j.result;
-    }catch(e){
-      if(e&&e.name==="AbortError"){const x=new Error("timeout");x.timeout=true;throw x}
-      throw e;
-    }finally{clearTimeout(t)}
-  }
-  async function api(path,timeout=10000){
-    const c=new AbortController(),t=setTimeout(()=>c.abort(),timeout);
-    try{
-      const r=await fetch(API+path,{signal:c.signal});
-      if(!r.ok){const e=new Error("HTTP "+r.status);e.status=r.status;throw e}
-      return await r.json();
-    }finally{clearTimeout(t)}
-  }
-
-  /* ---------- state ---------- */
-  const S={samples:[],blocks:new Map(),head:null,headTs:null,headBase:null,lastNewHeadAt:null,pollStart:0,
-    chainOk:null,fin:null,finTry:0,explorerHead:null,explorerOk:null,netTxs:null,stats:null,
-    incl:[],active:false,paused:false,gen:0,timer:null,n:0,updated:null};
-
-  const blockInfo=b=>({n:num(b.number),ts:num(b.timestamp),tx:(b.transactions||[]).length,gu:num(b.gasUsed)||0,gl:num(b.gasLimit)||0});
-
-  async function probe(){
-    const t0=performance.now();let b=null;
-    try{b=await rpcCall("eth_getBlockByNumber",["latest",false])}catch(e){}
-    const ms=performance.now()-t0,ok=!!b&&b.number!=null;
-    S.samples.push({t:Date.now(),ms,ok});if(S.samples.length>40)S.samples.shift();
-    if(ok){
-      const n=num(b.number);
-      if(S.head!==n)S.lastNewHeadAt=Date.now();
-      S.head=n;S.headTs=num(b.timestamp);S.headBase=b.baseFeePerGas?big(b.baseFeePerGas):null;
-      S.blocks.set(n,blockInfo(b));
-    }
-    return ok;
-  }
-  async function fillBlocks(){
-    if(S.head==null)return;
-    const want=[];for(let n=S.head;n>S.head-21&&n>=0;n--)if(!S.blocks.has(n))want.push(n);
-    for(let i=0;i<want.length;i+=5){
-      await Promise.allSettled(want.slice(i,i+5).map(async n=>{
-        const b=await rpcCall("eth_getBlockByNumber",["0x"+n.toString(16),false]);
-        if(b&&b.number!=null)S.blocks.set(n,blockInfo(b));
-      }));
-    }
-    const keep=new Set([...S.blocks.keys()].sort((a,b)=>b-a).slice(0,40));
-    for(const k of [...S.blocks.keys()])if(!keep.has(k))S.blocks.delete(k);
-  }
-  async function checkChain(){
-    try{const id=await rpcCall("eth_chainId",[]);S.chainOk=String(id).toLowerCase()===CHAIN;S.chainSeen=id}catch(e){}
-  }
-  async function checkFinal(){
-    if(S.head==null)return;
-    try{
-      const b=await rpcCall("eth_getBlockByNumber",["finalized",false]);
-      if(b&&b.number!=null)S.fin={n:num(b.number),lag:Math.max(0,S.head-num(b.number))};
-      else S.fin={na:true};
-    }catch(e){if(e.rpc)S.fin={na:true}}
-  }
-  async function explorer(){
-    const [b,t,s]=await Promise.allSettled([api("/blocks"),api("/transactions"),api("/stats")]);
-    S.explorerOk=b.status==="fulfilled";
-    if(b.status==="fulfilled"){
-      const items=Array.isArray(b.value)?b.value:(b.value&&b.value.items);
-      if(items&&items[0]&&items[0].height!=null)S.explorerHead=Number(items[0].height);
-    }
-    if(t.status==="fulfilled"&&t.value&&Array.isArray(t.value.items))S.netTxs=t.value.items;
-    if(s.status==="fulfilled")S.stats=s.value;
-  }
-
-  const series=()=>[...S.blocks.values()].sort((a,b)=>a.n-b.n);
-  function intervals(){
-    const a=series(),iv=[];
-    for(let i=1;i<a.length;i++)if(a[i].n===a[i-1].n+1)iv.push(Math.max(0,a[i].ts-a[i-1].ts));
-    return iv.slice(-20);
-  }
-  const isFail=t=>t.status==="error"||(t.status==null&&t.result&&t.result!=="success"&&t.result!=="pending");
-
-  /* ---------- health assessment ---------- */
-  function assess(){
-    const s=S.samples;
-    if(!s.length)return null;
-    const recent=s.slice(-20),okMs=recent.filter(x=>x.ok).map(x=>x.ms);
-    const succ=recent.filter(x=>x.ok).length/recent.length;
-    const med=median(okMs),p95=pctile(okMs,.95);
-    const iv=intervals(),medIv=median(iv),avgIv=avg(iv);
-    const issues=[];let level="good";
-    if(s.slice(-3).length===3&&s.slice(-3).every(x=>!x.ok)){level="down";issues.push("The RPC endpoint isn't responding.")}
-    else{
-      if(S.chainOk===false)issues.push("The RPC reports chain ID "+S.chainSeen+", not QMS Testnet (0x4c18).");
-      if(succ<.9)issues.push(Math.round((1-succ)*100)+"% of recent RPC probes failed.");
-      if(p95!=null&&p95>2500)issues.push("RPC responses are slow (p95 "+fmtMs(p95)+").");
-      const limit=Math.max(60,(medIv||10)*4)*1000;
-      if(S.lastNewHeadAt&&Date.now()-S.lastNewHeadAt>limit)issues.push("No new block has appeared for "+fmtS((Date.now()-S.lastNewHeadAt)/1000)+". Block production may be stalled.");
-      if(S.explorerHead!=null&&S.head!=null&&S.head-S.explorerHead>5)issues.push("The explorer is "+(S.head-S.explorerHead)+" blocks behind the RPC, so explorer data may be stale.");
-      const tx=S.netTxs;
-      if(tx&&tx.length>=20){const f=tx.filter(isFail).length;if(f/tx.length>.25)issues.push(Math.round(f/tx.length*100)+"% of the latest "+tx.length+" network transactions failed.")}
-      if(issues.length)level="warn";
-    }
-    return {level,issues,med,p95,succ,iv,medIv,avgIv,n:recent.length};
-  }
-
-  /* ---------- live view ---------- */
+  const clock=t=>new Date(t).toLocaleTimeString([], {hour:"2-digit",minute:"2-digit",second:"2-digit"});
   const tile=(l,v,sub)=>h("div","tile",h("p","tag",l),h("b",null,v),sub?h("small",null,sub):null);
-  function bars(vals,fmt,cls,label,slots){
-    const max=Math.max(1,...vals.filter(v=>v!=null));
-    const all=slots?Array(Math.max(0,slots-vals.length)).fill(undefined).concat(vals):vals;
-    const b=h("div","bars");b.setAttribute("role","img");b.setAttribute("aria-label",label);
-    all.forEach(v=>{
-      const i=h("i",v===undefined?"z":(v==null?"f":""));
-      i.style.height=v===undefined?"3%":(v==null?"100%":Math.max(4,v/max*100)+"%");
-      if(v!==undefined)i.title=v==null?"failed":fmt(v);
-      b.append(i);
+  const card=(title,small,...k)=>h("div","dcard",h("h3",null,title,small?h("small",null,small):null),...k);
+
+  async function getJSON(url,opt){
+    const c=new AbortController(),t=setTimeout(()=>c.abort(),12000);
+    try{const r=await fetch(url,Object.assign({signal:c.signal},opt||{}));
+      if(!r.ok){const e=new Error("HTTP "+r.status);e.status=r.status;throw e}
+      return await r.json()}
+    finally{clearTimeout(t)}
+  }
+  async function rpc(m,p){
+    const j=await getJSON(RPC,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({jsonrpc:"2.0",id:1,method:m,params:p||[]})});
+    if(j.error){const e=new Error(j.error.message||"RPC error");e.data=j.error.data;e.rpc=true;throw e}
+    return j.result;
+  }
+  const ok=r=>r.status==="fulfilled";
+
+  /* ---------- tabs ---------- */
+  const tabs=[...document.querySelectorAll(".ptabs button")];
+  let tab="wallet";
+  function show(name){
+    tab=name;
+    tabs.forEach(b=>{const on=b.dataset.tab===name;b.setAttribute("aria-selected",on);b.tabIndex=on?0:-1;$("pp-"+b.dataset.tab).hidden=!on});
+    if(name==="network")drawNetwork();
+    if(name==="apps")checkSites();
+  }
+  tabs.forEach((b,i)=>{
+    b.addEventListener("click",()=>show(b.dataset.tab));
+    b.addEventListener("keydown",e=>{
+      if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
+      const n=tabs[(i+(e.key==="ArrowRight"?1:tabs.length-1))%tabs.length];n.focus();show(n.dataset.tab);
     });
-    return b;
-  }
-
-  function renderLive(){
-    const A=assess(),box=$("plivebox"),ex=$("pextra");
-    if(!A){box.replaceChildren(h("p","dempty","Starting…"));return}
-    const kids=[];
-    const chip=h("span","st"+(A.level==="good"?" good":" bad"),A.level==="good"?"Healthy":(A.level==="down"?"Down":"Degraded"));
-    const facts=[];
-    if(A.med!=null)facts.push("The RPC answers in "+fmtMs(A.med)+" (median)");
-    if(A.medIv!=null)facts.push("blocks arrive about every "+fmtS(A.medIv));
-    if(S.head!=null)facts.push("the newest block is #"+S.head.toLocaleString("en-US"));
-    const tx=S.netTxs;
-    if(tx&&tx.length)facts.push((tx.filter(isFail).length)+" of the latest "+tx.length+" network transactions failed");
-    let text=(facts.length?facts.join(", ")+".":"No data yet.");
-    kids.push(h("div","dsum",
-      h("div","dsum-top",h("span",null,chip," ",h("b",null,"QMS Testnet")),h("span","pupd","Updated "+(S.updated?S.updated.toLocaleTimeString():"–"))),
-      h("p",null,text),
-      A.issues.length?h("ul","finds",A.issues.map(i=>h("li",null,i))):null));
-
-    const headAge=S.headTs!=null?Math.max(0,Date.now()/1000-S.headTs):null;
-    const fin=S.fin&&!S.fin.na?S.fin:null;
-    const fails=tx&&tx.length?tx.filter(isFail).length:null;
-    kids.push(h("div","tiles",
-      tile("RPC latency",fmtMs(A.med),"p95 "+fmtMs(A.p95)),
-      tile("RPC success",Math.round(A.succ*100)+"%","last "+pl(A.n,"probe")),
-      tile("Block time",A.avgIv!=null?fmtS(A.avgIv):"–",A.iv.length?"average of "+pl(A.iv.length,"block"):"collecting blocks"),
-      tile("Newest block",S.head!=null?"#"+S.head.toLocaleString("en-US"):"–",headAge!=null?fmtS(headAge)+" old":""),
-      tile("Finality",fin?fin.lag.toLocaleString("en-US"):"–",fin?"blocks behind the head":(S.fin&&S.fin.na?"not reported by the RPC":"checking")),
-      tile("Failed txs",fails!=null?Math.round(fails/tx.length*100)+"%":"–",tx&&tx.length?"of the latest "+tx.length+" on the network":"explorer data unavailable")
-    ));
-
-    const probeVals=S.samples.slice(-30).map(x=>x.ok?x.ms:null);
-    const ivVals=A.iv;
-    const c1=h("div","dcard",h("h3",null,"RPC response time",h("small",null,"last "+pl(probeVals.length,"probe"))),
-      bars(probeVals,v=>fmtMs(v),"","RPC response time per probe",30),
-      h("div","bars-x",h("span",null,"older"),h("span",null,"now")));
-    const c2=h("div","dcard",h("h3",null,"Time between blocks",h("small",null,"last "+pl(ivVals.length,"block"))),
-      ivVals.length?bars(ivVals,v=>v+" s","","Seconds between consecutive blocks",20):h("p","dempty","Collecting blocks…"),
-      h("div","bars-x",h("span",null,"older"),h("span",null,"latest")));
-    kids.push(h("div","dcols",c1,c2));
-    box.replaceChildren(...kids);
-
-    /* below the inspector: failures + app health + strip */
-    const ek=[];
-    const failed=(tx||[]).filter(isFail).slice(0,6);
-    const fc=h("div","dcard",h("h3",null,"Recent failed transactions",h("small",null,"network-wide")));
-    if(tx==null)fc.append(h("p","dempty","Explorer data is unavailable right now."));
-    else if(!failed.length)fc.append(h("p","dempty","No failures in the latest "+tx.length+" transactions."));
-    else failed.forEach(t=>{
-      const hash=t.hash,to=t.to&&t.to.hash;
-      const why=t.revert_reason||(t.result&&t.result!=="success"?t.result:"failed");
-      const row=HASH.test(hash||"")?h("button","lrow lbtn"):h("div","lrow");
-      row.append(h("span",null,h("span","l1",t.created_contract?"Contract deploy":(t.method?String(t.method):"Transaction"),h("span","st bad","failed")),
-        h("span","l2",String(why).slice(0,90)+(to&&ADDR.test(to)?" · to "+short(to):""))),
-        h("span","r",t.timestamp?ago(Date.now()-new Date(t.timestamp).getTime()):"",h("small",null,"inspect →")));
-      if(HASH.test(hash||"")){row.type="button";row.addEventListener("click",()=>{$("pq").value=hash;runInspect(hash);$("pform").scrollIntoView({behavior:"smooth",block:"center"})})}
-      fc.append(row);
-    });
-    const groups=new Map();
-    (tx||[]).forEach(t=>{
-      const to=t.to&&t.to.hash;if(!to||!ADDR.test(to)||!(t.to.is_contract||t.method))return;
-      const g=groups.get(to)||{to,name:t.to.name,n:0,f:0};g.n++;if(isFail(t))g.f++;groups.set(to,g);
-    });
-    const top=[...groups.values()].sort((a,b)=>b.n-a.n).slice(0,5);
-    const ac=h("div","dcard",h("h3",null,"Application health",h("small",null,"success rate by contract")));
-    if(!top.length)ac.append(h("p","dempty",tx==null?"Explorer data is unavailable right now.":"No contract calls in the latest transactions."));
-    top.forEach(g=>{
-      const okN=g.n-g.f,tr=h("div","mtrack",h("i"));tr.firstChild.style.width=Math.max(4,okN/g.n*100)+"%";
-      const b=h("button","linkbtn",g.name||short(g.to));b.type="button";b.title="Inspect "+g.to;
-      b.addEventListener("click",()=>{$("pq").value=g.to;runInspect(g.to);$("pform").scrollIntoView({behavior:"smooth",block:"center"})});
-      ac.append(h("div","mrow",b,tr,h("b",null,okN+"/"+g.n)));
-    });
-    ek.push(h("div","dcols",fc,ac));
-
-    const bits=[];
-    const sr=series().slice(-20);
-    if(sr.length){
-      const full=sr.filter(x=>x.gl).map(x=>x.gu/x.gl*100);
-      if(full.length)bits.push(["Block fullness",avg(full).toFixed(1)+"%"]);
-      bits.push(["Txs per block",avg(sr.map(x=>x.tx)).toFixed(1)]);
-    }
-    if(S.explorerOk===false)bits.push(["Explorer","unreachable"]);
-    else if(S.explorerHead!=null&&S.head!=null){const lag=S.head-S.explorerHead;bits.push(["Explorer sync",lag<=1?"in sync":(lag>0?lag+" blocks behind":"ahead of RPC")])}
-    if(S.chainOk!=null)bits.push(["Chain ID",S.chainOk?"19480 ✓":"mismatch"]);
-    if(S.stats&&S.stats.transactions_today!=null)bits.push(["Txs today",Number(S.stats.transactions_today).toLocaleString("en-US")]);
-    if(S.stats&&S.stats.gas_prices&&S.stats.gas_prices.average!=null)bits.push(["Gas",S.stats.gas_prices.average+" gwei"]);
-    if(bits.length)ek.push(h("div","dnet",h("span",null,"Network now:"),bits.map(([k,v])=>h("span",null,k+" ",h("b",null,v)))));
-    ek.push(h("p","dsub","Measured from your browser using the public QMS Testnet RPC and QMSScan. Latency includes your own connection."));
-    ex.replaceChildren(...ek);
-  }
-
-  /* ---------- polling loop ---------- */
-  async function cycle(force){
-    S.n++;
-    await probe();
-    if(S.n===1||S.n%30===0)checkChain();
-    await fillBlocks();
-    const tasks=[];
-    if(force||S.n===1||S.n%3===1)tasks.push(explorer());
-    const finDue=S.fin&&S.fin.na?S.n%30===1:S.n%3===1;
-    if(force||S.n===1||finDue)tasks.push(checkFinal());
-    await Promise.allSettled(tasks);
-    S.updated=new Date();
-    renderLive();
-  }
-  async function tick(g){
-    if(g!==S.gen||!S.active||S.paused)return;
-    try{await cycle(false)}catch(e){}
-    if(g!==S.gen||!S.active||S.paused)return;
-    S.timer=setTimeout(()=>tick(g),10000);
-  }
-  function start(){
-    if(S.active&&!S.paused)return;
-    S.active=true;
-    if(S.paused){renderLive();return}
-    clearTimeout(S.timer);
-    const g=++S.gen;S.pollStart=Date.now();if(!S.lastNewHeadAt)S.lastNewHeadAt=Date.now();
-    tick(g);
-  }
-  function stop(){S.active=false;S.gen++;clearTimeout(S.timer)}
-
-  /* ---------- inclusion tracker (transactions sent from this page) ---------- */
-  function renderIncl(){
-    const box=$("pincl");if(!box)return;
-    const done=S.incl.filter(x=>x.state==="ok"||x.state==="failed").map(x=>x.ms/1000);
-    const kids=[h("h3",null,"Inclusion time",h("small",null,done.length?"median "+fmtS(median(done)):"from this page"))];
-    if(!S.incl.length)kids.push(h("p","dempty","Say GM or deploy a contract in the section above, and QMS Pulse will time how long your transaction takes to be included in a block."));
-    S.incl.forEach(x=>{
-      const stateTxt=x.state==="waiting"?"waiting… "+fmtS((Date.now()-x.t0)/1000):(x.state==="timeout"?"not included after 3 min":fmtS(x.ms/1000));
-      const row=link(SCAN+"/tx/"+x.hash,"","lrow");
-      row.append(h("span",null,h("span","l1",x.kind,x.state==="failed"?h("span","st bad","failed"):null),h("span","l2",short(x.hash)+(x.block?" · block #"+x.block.toLocaleString("en-US"):""))),
-        h("span","r",stateTxt));
-      kids.push(row);
-    });
-    if(S.incl.length)kids.push(h("p","dsub","Timed by checking the RPC every second after your wallet sends the transaction, so it is accurate to about a second."));
-    box.replaceChildren(...kids);
-  }
-  async function trackIncl(it){
-    const end=Date.now()+180000;let i=0;
-    while(Date.now()<end){
-      try{
-        const r=await rpcCall("eth_getTransactionReceipt",[it.hash],6000);
-        if(r){it.ms=Date.now()-it.t0;it.state=r.status==="0x1"?"ok":"failed";it.block=num(r.blockNumber);renderIncl();return}
-      }catch(e){}
-      if(++i%3===0)renderIncl();
-      await sleep(1000);
-    }
-    it.state="timeout";renderIncl();
-  }
-  addEventListener("qpouch:sent",e=>{
-    const d=e.detail||{};if(!HASH.test(d.hash||""))return;
-    const it={hash:d.hash,kind:d.kind==="deploy"?"Contract deploy":"GM transaction",t0:d.t0||Date.now(),state:"waiting"};
-    S.incl.unshift(it);S.incl=S.incl.slice(0,8);renderIncl();trackIncl(it);
   });
 
-  /* ---------- inspector ---------- */
-  const PANIC={1:"an assert failed",17:"arithmetic overflow or underflow",18:"division or modulo by zero",33:"an invalid enum value",34:"a corrupted storage byte array",49:"pop on an empty array",50:"array index out of bounds",65:"too much memory requested",81:"a call to an uninitialised function"};
-  function decodeRevert(d){
-    if(!d||typeof d!=="string"||!/^0x[0-9a-fA-F]*$/.test(d)||d==="0x")return {kind:"empty"};
-    const sel=d.slice(0,10).toLowerCase();
-    if(sel==="0x08c379a0"){
-      try{
-        const hex=d.slice(10),off=parseInt(hex.slice(0,64),16)*2,len=parseInt(hex.slice(off,off+64),16);
-        if(!isFinite(off)||!isFinite(len)||len>2000)throw 0;
-        const bytes=(hex.slice(off+64,off+64+len*2).match(/../g)||[]).map(x=>parseInt(x,16));
-        return {kind:"error",text:new TextDecoder().decode(Uint8Array.from(bytes))};
-      }catch(e){return {kind:"custom",sel}}
-    }
-    if(sel==="0x4e487b71"){const c=parseInt(d.slice(10,74),16);return {kind:"panic",code:c,text:PANIC[c]||"panic code 0x"+c.toString(16)}}
-    return {kind:"custom",sel};
+  /* ---------- live strip ---------- */
+  const samples=[];            // {t,ms,ok}
+  const blocks=new Map();      // number -> {n,ts,tx,gu,gl,bf}
+  let head=null,headSeenAt=null,fee={gp:null,bf:null},ex={ok:null,ms:null,height:null,err:false};
+  function setCell(id,k,main,sub){
+    const c=$(id);c.dataset.k=k;c.querySelector("b").textContent=main;c.querySelector("small").textContent=sub||" ";
   }
-  async function replay(tx,bn){
-    const call={from:tx.from,data:tx.input||tx.data||"0x",value:tx.value||"0x0",gas:tx.gas};
-    if(tx.to)call.to=tx.to;
-    try{await rpcCall("eth_call",[call,"0x"+Math.max(0,bn-1).toString(16)]);return {reproduced:false}}
-    catch(e){
-      if(e.timeout||e.http)return {unavailable:"The RPC didn't answer the replay."};
-      const msg=e.message||"";
-      if(/missing trie|header not found|not available|pruned|unknown block|historical/i.test(msg))return {unavailable:"The node doesn't keep state for that block, so the failure can't be replayed."};
-      if(/out of gas|gas required exceeds/i.test(msg))return {reproduced:true,rev:{kind:"oog"}};
-      const data=typeof e.data==="string"?e.data:(e.data&&typeof e.data.data==="string"?e.data.data:null);
-      let rev=decodeRevert(data);
-      const m=msg.match(/execution reverted:?\s*(.*)$/i);
-      if(rev.kind==="empty"&&m&&m[1])rev={kind:"error",text:m[1]};
-      return {reproduced:true,rev};
-    }
+  const okSamples=()=>samples.filter(s=>s.ok);
+  function sortedBlocks(){return [...blocks.values()].sort((a,b)=>a.n-b.n)}
+  function intervals(){
+    const b=sortedBlocks(),r=[];
+    for(let i=1;i<b.length;i++)if(b[i].n===b[i-1].n+1)r.push({n:b[i].n,dt:b[i].ts-b[i-1].ts});
+    return r;
   }
-  function revertHints(text){
-    const t=String(text),out=[];
-    if(/allowance|approve/i.test(t))out.push("This looks like a token allowance problem: approve the spender for enough tokens before retrying.");
-    if(/insufficient (balance|funds)|exceeds balance|transfer amount exceeds/i.test(t))out.push("This looks like an insufficient token or QMS balance for the amount requested.");
-    if(/slippage|too little received|insufficient_output|insufficient_input|expired|deadline/i.test(t))out.push("This looks swap-related: slippage was too tight or the deadline passed. Refresh the quote, allow more slippage or retry sooner.");
-    if(/not the owner|ownable|accesscontrol|unauthori[sz]ed|not authori[sz]ed|only/i.test(t))out.push("This looks like a permissions check: the calling account isn't allowed to do this.");
-    if(/paused/i.test(t))out.push("The contract appears to be paused.");
-    return out;
-  }
-  const kv=rows=>h("dl","kv",rows.filter(Boolean).flatMap(([k,v])=>[h("dt",null,k),h("dd",null,v)]));
-  const addrLink=a=>ADDR.test(a||"")?link(SCAN+"/address/"+a,short(a)):"–";
-  const finds=list=>list.length?h("ul","finds",list.map(x=>h("li",null,x))):h("p","dempty","Nothing unusual found.");
-
-  function summaryCard(chipTxt,bad,id,url,sentence){
-    return h("div","dsum",h("div","dsum-top",h("span",null,h("span","st"+(bad?" bad":" good"),chipTxt)," ",h("span","mono",id)),link(url,"Open in explorer ↗","chip")),h("p",null,sentence));
-  }
-
-  async function inspectTx(hash){
-    const [txR,rcR,scR]=await Promise.allSettled([rpcCall("eth_getTransactionByHash",[hash]),rpcCall("eth_getTransactionReceipt",[hash]),api("/transactions/"+hash)]);
-    if(txR.status==="rejected"&&rcR.status==="rejected")throw txR.reason;
-    const tx=txR.status==="fulfilled"?txR.value:null,rc=rcR.status==="fulfilled"?rcR.value:null,sc=scR.status==="fulfilled"?scR.value:null;
-    const url=SCAN+"/tx/"+hash,list=[];
-
-    if(!tx&&!rc){
-      if(sc&&sc.block_number!=null)list.push("The explorer lists this transaction in block #"+sc.block_number+", but the RPC doesn't return it. The RPC node may be lagging or pruned. Try again in a moment.");
-      else list.push("Most often this is a typo, a hash from another network, a transaction that was never broadcast, or one that was dropped from the pool before it was mined.");
-      list.push("Check the hash, and that your wallet is on QMS Testnet (chain ID 19480).");
-      return [summaryCard("Not found",true,short(hash),url,"The RPC has no record of this transaction."),h("div","dcard",h("h3",null,"What this suggests"),finds(list))];
-    }
-
-    const from=tx&&tx.from,to=tx&&tx.to,input=(tx&&(tx.input||tx.data))||"0x";
-    const isCreate=tx?!tx.to:!!(rc&&rc.contractAddress);
-    const method=isCreate?"Contract creation":(sc&&sc.method?String(sc.method):(input.length>=10?"Call "+input.slice(0,10):"Plain transfer"));
-    const gasLimit=tx?num(tx.gas):null;
-
-    /* pending */
-    if(tx&&!tx.blockNumber&&!rc){
-      const [lb,nonceR,balR]=await Promise.allSettled([rpcCall("eth_getBlockByNumber",["latest",false]),rpcCall("eth_getTransactionCount",[from,"latest"]),rpcCall("eth_getBalance",[from,"latest"])]);
-      const lbv=lb.status==="fulfilled"?lb.value:null;
-      const base=lbv&&lbv.baseFeePerGas?big(lbv.baseFeePerGas):null,cap=big(tx.maxFeePerGas||tx.gasPrice);
-      const nonceNow=nonceR.status==="fulfilled"?num(nonceR.value):null,txNonce=num(tx.nonce);
-      if(base!=null&&cap<base)list.push("Its fee cap ("+gwei(cap)+") is below the current base fee ("+gwei(base)+"), so it can't be included until the base fee drops. Replace it with a higher fee.");
-      if(nonceNow!=null&&txNonce>nonceNow)list.push("There is a nonce gap: this is nonce "+txNonce+" but the account's next expected nonce is "+nonceNow+". Earlier transactions must be mined first.");
-      if(nonceNow!=null&&txNonce<nonceNow)list.push("This nonce has already been used by another transaction, so this one was replaced or will never be mined.");
-      if(lbv&&gasLimit>num(lbv.gasLimit))list.push("Its gas limit is higher than a block's gas limit, so it can never be included.");
-      if(balR.status==="fulfilled"&&big(balR.value)<big(tx.value)+BigInt(gasLimit)*cap)list.push("The sender's balance may not cover the value plus the maximum fee.");
-      if(!list.length)list.push("It looks valid and is waiting to be included. Blocks arrive about every "+fmtS(median(intervals()))+".");
-      return [summaryCard("Pending",false,short(hash),url,"This transaction has been broadcast but is not in a block yet."),
-        h("div","dcard",h("h3",null,"Details"),kv([["From",addrLink(from)],["To",isCreate?"New contract":addrLink(to)],["Action",method],["Nonce",String(txNonce)],["Fee cap",gwei(cap)],["Current base fee",base!=null?gwei(base):"–"],["Gas limit",gasLimit!=null?gasLimit.toLocaleString("en-US"):"–"]])),
-        h("div","dcard",h("h3",null,"What this suggests"),finds(list))];
-    }
-
-    /* mined */
-    const bn=num(rc.blockNumber),ok=rc.status==="0x1",used=num(rc.gasUsed);
-    const [blkR,headR,codeR]=await Promise.allSettled([
-      rpcCall("eth_getBlockByNumber",[rc.blockNumber,false]),
-      rpcCall("eth_blockNumber",[]),
-      (tx&&tx.to)?rpcCall("eth_getCode",[tx.to,"latest"]):Promise.resolve(null)]);
-    const blk=blkR.status==="fulfilled"?blkR.value:null,head=headR.status==="fulfilled"?num(headR.value):S.head;
-    const eff=big(rc.effectiveGasPrice||(tx&&tx.gasPrice)),fee=eff*BigInt(used||0);
-    const baseB=blk&&blk.baseFeePerGas?big(blk.baseFeePerGas):null;
-    const conf=head!=null?Math.max(1,head-bn+1):null;
-    const ratio=gasLimit?used/gasLimit:null;
-    const age=blk?ago(Date.now()-num(blk.timestamp)*1000):"–";
-    const logs=(rc.logs||[]).length;
-
-    if(ok){
-      if(isCreate){
-        const ca=rc.contractAddress;
-        let size=null;
-        if(ca){try{size=(String(await rpcCall("eth_getCode",[ca,"latest"])).length-2)/2}catch(e){}}
-        if(size===0)list.push("The deployment transaction succeeded, but no code exists at "+short(ca)+". The constructor may have self-destructed or returned empty code.");
-        else if(size>0)list.push("Contract "+short(ca)+" is live with "+size.toLocaleString("en-US")+" bytes of code.");
-      }else if(tx&&tx.to&&input.length>2&&codeR.status==="fulfilled"&&codeR.value==="0x")
-        list.push("This sent data to an address with no contract code, so nothing was executed. If you meant to call a contract, you may have the wrong address or network.");
-      else if(tx&&tx.to&&input.length>2&&logs===0)list.push("The call succeeded but emitted no events. If you expected a transfer or swap event, check that you called the right function.");
-      if(ratio!=null&&ratio>.9)list.push("It used "+Math.round(ratio*100)+"% of its gas limit, close to running out. Allow more headroom next time.");
-      if(baseB!=null&&eff>baseB&&eff-baseB===0n)list.push("It paid no priority tip over the base fee.");
-      if(!list.length)list.push("Nothing unusual. It succeeded, used "+(ratio!=null?Math.round(ratio*100)+"% of its gas limit":"gas normally")+" and is "+(conf>1?conf+" blocks deep":"in the latest block")+".");
+  function drawStrip(){
+    const last=samples[samples.length-1];
+    if(!last){return}
+    const recent=samples.slice(-20),good=recent.filter(s=>s.ok);
+    let fails=0;for(let i=samples.length-1;i>=0&&!samples[i].ok;i--)fails++;
+    if(!last.ok){
+      setCell("pc-rpc",fails>=3?"bad":"warn","Unreachable",fails>=3?"No reply from RPC":"Last request failed");
     }else{
-      let rep=null;
-      if(tx)rep=await replay(tx,bn);
-      const oog=(ratio!=null&&ratio>=.99)||(rep&&rep.rev&&rep.rev.kind==="oog");
-      if(oog)list.push("It used all of its gas limit ("+used.toLocaleString("en-US")+"). This usually means the limit was too low for what the call needed. Retry with a higher gas limit or let the wallet estimate it.");
-      if(rep&&rep.reproduced&&rep.rev&&rep.rev.kind!=="oog"){
-        const r=rep.rev;
-        if(r.kind==="error"){list.push("The contract reverted with the message: “"+r.text+"”.");revertHints(r.text).forEach(x=>list.push(x))}
-        else if(r.kind==="panic")list.push("The contract hit a panic: "+r.text+". This points to a bug or an unexpected input.");
-        else if(r.kind==="custom")list.push("The contract reverted with custom error "+r.sel+". The contract's ABI names it; verified contracts show decoded errors on the explorer.");
-        else if(!oog)list.push("The contract reverted without a message. Common causes: a failed check with no text, sending QMS to a function that isn't payable, or calling a function that doesn't exist.");
-      }else if(rep&&rep.reproduced===false&&!oog)list.push("Replaying it one block earlier succeeds, so the state probably changed around it (a price moved, an allowance or allocation was used, another transaction landed first). This is typical for swaps and mints.");
-      else if(rep&&rep.unavailable&&!oog)list.push(rep.unavailable);
-      if(sc&&sc.result&&sc.result!=="success"&&sc.result!=="ok")list.push("The explorer labels the result as “"+sc.result+"”.");
-      if(isCreate)list.push("This was a contract creation. Check constructor arguments, any QMS value sent to a non-payable constructor, and that the bytecode targets a compiler EVM version the network supports.");
-      if(tx&&tx.to&&input==="0x"&&big(tx.value)>0n)list.push("It sent plain QMS to a contract. If that contract has no receive function, it rejects transfers.");
-      if(!list.length)list.push("The transaction failed on-chain but the cause couldn't be determined from the RPC. Open it in the explorer for the trace.");
+      const m=med(good.map(s=>s.ms)),rate=good.length/recent.length;
+      const k=rate<.9||last.ms>2500?"bad":(rate<1||m>1200?"warn":"ok");
+      setCell("pc-rpc",k,k==="ok"?"Online":"Slow",ms(last.ms)+" · "+pct(good.length,recent.length)+" ok");
     }
-
-    const sentence=(ok?"Succeeded":"Failed")+" in block #"+bn.toLocaleString("en-US")+(conf?" with "+conf.toLocaleString("en-US")+" confirmation"+(conf>1?"s":""):"")+(blk?", included "+age:"")+".";
-    return [summaryCard(ok?"Success":"Failed",!ok,short(hash),url,sentence),
-      h("div","dcard",h("h3",null,"Details"),kv([
-        ["Action",method],
-        ["From",addrLink(from)],
-        ["To",isCreate?(rc.contractAddress?h("span",null,"New contract ",addrLink(rc.contractAddress)):"New contract"):addrLink(to)],
-        ["Block",link(SCAN+"/block/"+bn,"#"+bn.toLocaleString("en-US"))],
-        ["Position in block",blk?(rc.transactionIndex!=null?(num(rc.transactionIndex)+1)+((blk.transactions||[]).length>num(rc.transactionIndex)?" of "+(blk.transactions||[]).length:""):"–"):"–"],
-        ["Gas used",used.toLocaleString("en-US")+(gasLimit?" of "+gasLimit.toLocaleString("en-US")+" ("+Math.round(ratio*100)+"%)":"")],
-        ["Fee paid",units(fee,18,6)+" QMS"],
-        ["Gas price",gwei(eff)+(baseB!=null?" (base fee "+gwei(baseB)+")":"")],
-        ["Events",String(logs)]])),
-      h("div","dcard",h("h3",null,ok?"What this suggests":"Why it failed"),finds(list))];
+    if(head!=null){
+      const b=blocks.get(head);
+      const age=headSeenAt?(Date.now()-headSeenAt)/1000:(b?Math.max(0,Date.now()/1000-b.ts):null);
+      const k=age==null?"wait":age>180?"bad":age>60?"warn":"ok";
+      setCell("pc-blk",k,"#"+head.toLocaleString("en-US"),age==null?"":(k==="ok"?secs(age)+" ago":"No new block for "+secs(age)));
+    }
+    const iv=intervals().map(x=>x.dt);
+    if(iv.length){
+      const a=avg(iv),k=a>30?"bad":(a>15||a<4)?"warn":"ok";
+      setCell("pc-bt",k,a.toFixed(1)+" s","target "+TARGET+" s · last "+iv.length);
+    }
+    if(ex.err)setCell("pc-ex","bad","Unreachable","Explorer not responding");
+    else if(ex.height!=null){
+      const lag=head!=null?head-ex.height:0;
+      const k=lag>20?"bad":lag>3?"warn":"ok";
+      setCell("pc-ex",k,lag>3?"Behind "+lag+" blocks":"Synced","Block #"+ex.height.toLocaleString("en-US")+" · "+ms(ex.ms));
+    }
   }
-
-  async function inspectAddr(addr){
-    const [codeR,balR,nonceR,scR]=await Promise.allSettled([rpcCall("eth_getCode",[addr,"latest"]),rpcCall("eth_getBalance",[addr,"latest"]),rpcCall("eth_getTransactionCount",[addr,"latest"]),api("/addresses/"+addr)]);
-    if(codeR.status==="rejected"&&balR.status==="rejected")throw codeR.reason;
-    const code=codeR.status==="fulfilled"?String(codeR.value||"0x"):"0x",size=(code.length-2)/2;
-    const bal=balR.status==="fulfilled"?big(balR.value):null,nonce=nonceR.status==="fulfilled"?num(nonceR.value):null;
-    const sc=scR.status==="fulfilled"?scR.value:null,url=SCAN+"/address/"+addr,list=[],extra=[];
-    if(size>0){
-      const verified=sc&&sc.is_verified;
-      list.push("Code is live on QMS Testnet: "+size.toLocaleString("en-US")+" bytes.");
-      list.push(verified?"The source is verified on the explorer"+(sc.name?" as “"+sc.name+"”":"")+", so anyone can read and call it.":"The source isn't verified on the explorer. Verifying it lets people read the code and call functions from the explorer.");
-      const impl=sc&&(Array.isArray(sc.implementations)&&sc.implementations[0]);
-      if(impl&&(impl.address_hash||impl.address))list.push("It looks like a proxy. Logic contract: "+short(impl.address_hash||impl.address)+".");
-      const ctx=sc&&sc.creation_transaction_hash;
-      if(HASH.test(ctx||"")){const b=h("button","linkbtn","Inspect the deployment transaction →");b.type="button";b.addEventListener("click",()=>{$("pq").value=ctx;runInspect(ctx)});extra.push(b)}
-      return [summaryCard("Live contract",false,short(addr),url,"The deployment succeeded: there is contract code at this address."),
-        h("div","dcard",h("h3",null,"Details"),kv([["Code size",size.toLocaleString("en-US")+" bytes"],["Balance",bal!=null?units(bal)+" QMS":"–"],["Verified",verified?"Yes":"No"],["Name",sc&&sc.name?String(sc.name):"–"],["Creator",sc&&sc.creator_address_hash?addrLink(sc.creator_address_hash):"–"]])),
-        h("div","dcard",h("h3",null,"What this suggests"),finds(list),extra.length?h("p","dmore",extra):null)];
-    }
-    if((bal!=null&&bal>0n)||(nonce!=null&&nonce>0)){
-      const b=h("button","linkbtn","Open it in the Wallet tab →");b.type="button";
-      b.addEventListener("click",()=>{$("daddr").value=addr;showTab("wallet");const f=$("dform");f.requestSubmit?f.requestSubmit():f.dispatchEvent(new Event("submit",{cancelable:true}))});
-      return [summaryCard("Wallet",false,short(addr),url,"This is a regular wallet address, not a contract. It has no code."),
-        h("div","dcard",h("h3",null,"Details"),kv([["Balance",bal!=null?units(bal)+" QMS":"–"],["Transactions sent",nonce!=null?String(nonce):"–"]])),h("p","dmore",b)];
-    }
-    list.push("There is no code, no balance and no history at this address on QMS Testnet.");
-    list.push("If you expected a contract here, the deployment may not be mined yet, may have failed, or you may be on a different network. Paste the deployment transaction hash instead to see what happened.");
-    return [summaryCard("Empty",true,short(addr),url,"Nothing exists at this address yet."),h("div","dcard",h("h3",null,"What this suggests"),finds(list))];
-  }
-
-  let iseq=0;
-  const say=(t,err)=>{const m=$("pmsg");m.textContent=t||"";m.classList.toggle("err",!!err)};
-  async function runInspect(q){
-    q=String(q||"").trim();
-    const out=$("pout"),go=$("pgo");
-    if(!HASH.test(q)&&!ADDR.test(q)){out.hidden=true;say("Paste a transaction hash (66 characters) or a contract address (42 characters), starting with 0x.",true);return}
-    const my=++iseq;go.disabled=true;say("Inspecting…");
+  async function ping(){
+    const t0=performance.now();
     try{
-      const kids=HASH.test(q)?await inspectTx(q):await inspectAddr(q);
-      if(my!==iseq)return;
-      out.replaceChildren(...kids);out.hidden=false;say("");
-    }catch(e){
-      if(my!==iseq)return;
-      out.hidden=true;say("Couldn't reach QMS Testnet right now. Please try again in a moment.",true);
-    }finally{if(my===iseq)go.disabled=false}
+      const v=num(await rpc("eth_blockNumber"));
+      const dt=performance.now()-t0;
+      samples.push({t:Date.now(),ms:dt,ok:true});
+      if(v!==head){head=v;headSeenAt=Date.now();fetchBlocks().then(()=>{drawStrip();if(tab==="network")drawNetwork()})}
+    }catch(e){samples.push({t:Date.now(),ms:performance.now()-t0,ok:false,err:e})}
+    if(samples.length>60)samples.shift();
+    drawStrip();if(tab==="network")drawNetwork();
   }
-  $("pform").addEventListener("submit",e=>{e.preventDefault();runInspect($("pq").value)});
-
-  /* ---------- tabs and controls ---------- */
-  const tabs={wallet:[$("tab-wallet"),$("pane-wallet")],pulse:[$("tab-pulse"),$("pane-pulse")]};
-  function showTab(which){
-    for(const [k,[t,p]] of Object.entries(tabs)){const on=k===which;t.setAttribute("aria-selected",on?"true":"false");t.tabIndex=on?0:-1;p.hidden=!on}
-    if(which==="pulse")start();else stop();
-  }
-  Object.entries(tabs).forEach(([k,[t]])=>{
-    t.addEventListener("click",()=>showTab(k));
-    t.addEventListener("keydown",e=>{
-      if(e.key==="ArrowRight"||e.key==="ArrowLeft"){const o=k==="wallet"?"pulse":"wallet";showTab(o);tabs[o][0].focus();e.preventDefault()}
+  async function fetchBlocks(){
+    if(head==null)return;
+    const want=[];for(let n=head;n>head-24&&n>=0;n--)if(!blocks.has(n))want.push(n);
+    const r=await Promise.allSettled(want.map(n=>rpc("eth_getBlockByNumber",["0x"+n.toString(16),false])));
+    r.forEach((x,i)=>{
+      if(!ok(x)||!x.value)return;const b=x.value;
+      blocks.set(want[i],{n:want[i],ts:num(b.timestamp),tx:(b.transactions||[]).length,gu:num(b.gasUsed),gl:num(b.gasLimit),bf:b.baseFeePerGas?big(b.baseFeePerGas):null});
     });
-  });
-  $("plive").addEventListener("click",()=>{
-    S.paused=!S.paused;
-    const b=$("plive");b.classList.toggle("on",!S.paused);b.setAttribute("aria-pressed",S.paused?"false":"true");b.lastChild.textContent=S.paused?"Paused":"Live";
-    if(S.paused){clearTimeout(S.timer);S.gen++}else{S.active=false;start()}
-  });
-  $("prefresh").addEventListener("click",async()=>{
-    const b=$("prefresh");b.disabled=true;
-    try{await cycle(true)}catch(e){}
-    b.disabled=false;
-  });
-  document.addEventListener("visibilitychange",()=>{
-    if(!tabs.pulse[1].hidden){if(document.hidden)stop();else start()}
+    [...blocks.keys()].sort((a,b)=>b-a).slice(30).forEach(k=>blocks.delete(k));
+    if(!blocks.size)return;
+    const b=blocks.get(head);if(b&&b.bf!=null)fee.bf=b.bf;
+  }
+  async function pollFee(){
+    try{fee.gp=big(await rpc("eth_gasPrice"))}catch(e){}
+    if(tab==="network")drawNetwork();
+  }
+  async function pollExplorer(){
+    const t0=performance.now();
+    try{
+      const j=await getJSON(API+"/main-page/blocks");
+      const a=Array.isArray(j)?j:(j&&j.items)||[];
+      const hgt=a.length?num(a[0].height):null;
+      ex={ok:true,ms:performance.now()-t0,height:hgt,err:hgt==null,list:a};
+    }catch(e){ex={ok:false,ms:null,height:null,err:true,list:ex.list}}
+    drawStrip();if(tab==="network")drawNetwork();
+  }
+  function tick(){
+    if(document.hidden)return;
+    ping();
+  }
+  setInterval(tick,5000);setInterval(()=>{if(!document.hidden)pollExplorer()},15000);
+  setInterval(()=>{if(!document.hidden)pollFee()},20000);
+  setInterval(()=>{if(!document.hidden)drawStrip()},1000);
+  document.addEventListener("visibilitychange",()=>{if(!document.hidden){ping();pollExplorer()}});
+  ping();pollExplorer();pollFee();
+
+  /* ---------- Network tab ---------- */
+  function snapshot(){
+    const ok_=okSamples().map(s=>s.ms),iv=intervals().map(x=>x.dt);
+    return ["QMS Pulse snapshot · "+new Date().toISOString(),
+      "RPC: "+(samples.length?pct(ok_.length,samples.length)+" ok of last "+samples.length+", median "+ms(med(ok_))+", p95 "+ms(p95(ok_)):"no data"),
+      "Latest block: "+(head!=null?"#"+head:"–"),
+      "Block time: "+(iv.length?avg(iv).toFixed(1)+" s avg over "+iv.length+" blocks (target "+TARGET+" s)":"–"),
+      "Explorer: "+(ex.err?"unreachable":ex.height!=null?"block #"+ex.height+" ("+(head!=null?(head-ex.height)+" behind RPC":"")+")":"–"),
+      "Chain 19480 · "+RPC].join("\n");
+  }
+  function drawNetwork(){
+    if(!samples.length){
+      ["n-rpc","n-blk","n-fee","n-recent"].forEach(id=>$(id).replaceChildren(h("p","pnote","Collecting data…")));return;
+    }
+    const good=okSamples().map(s=>s.ms),failN=samples.length-good.length;
+    $("n-rpc").replaceChildren(
+      h("h3",null,"RPC endpoint",h("small",null,"last "+samples.length+" checks · every 5 s")),
+      h("div","tiles",tile("Success",pct(good.length,samples.length),failN+" failed"),tile("Median",ms(med(good))),tile("Slowest 5%",ms(p95(good))),tile("Latest",ms(samples[samples.length-1].ms))),
+      (()=>{
+        const mx=Math.max(...samples.map(s=>s.ok?s.ms:0),300);
+        const sp=h("div","spark");
+        samples.slice(-30).forEach(s=>{const i=h("i",s.ok?"":"bad");i.style.height=s.ok?Math.max(4,Math.round(s.ms/mx*100))+"%":"100%";i.title=s.ok?ms(s.ms):"failed";sp.append(i)});
+        return sp;
+      })(),
+      h("p","pnote","Each bar is one request from your browser. Outlined bars are failed requests.")
+    );
+    const iv=intervals(),dts=iv.map(x=>x.dt),b=sortedBlocks();
+    const slow=dts.filter(d=>d>20).length,txs=b.map(x=>x.tx),util=b.filter(x=>x.gl).map(x=>x.gu/x.gl*100);
+    const sp=h("div","spark");
+    if(dts.length){
+      const mx=Math.max(...dts,TARGET*1.5);
+      iv.slice(-24).forEach(x=>{const i=h("i",x.dt>20?"slow":"");i.style.height=Math.max(4,Math.round(x.dt/mx*100))+"%";i.title="#"+x.n+": "+x.dt+" s";sp.append(i)});
+      const t=h("div","tline");t.style.bottom=Math.round(TARGET/mx*100)+"%";t.append(h("span",null,TARGET+" s target"));sp.append(t);
+    }
+    $("n-blk").replaceChildren(
+      h("h3",null,"Block production",h("small",null,dts.length?"last "+dts.length+" blocks":"")),
+      dts.length?h("div","tiles",tile("Average",avg(dts).toFixed(1)+" s"),tile("Longest",Math.max(...dts)+" s"),tile("Over 20 s",String(slow)),tile("Txs / block",avg(txs).toFixed(1))):h("p","pnote","Waiting for blocks…"),
+      dts.length?sp:null,
+      dts.length?h("p","pnote","Each bar is the gap between two blocks. Outlined bars took longer than 20 s."+(util.length?" Blocks are "+avg(util).toFixed(1)+"% full on average.":"")):null
+    );
+    const gp=fee.gp,bf=fee.bf;
+    $("n-fee").replaceChildren(
+      h("h3",null,"Fees"),
+      h("dl","kv",
+        h("dt",null,"Gas price"),h("dd",null,gp!=null?units(gp,9,3)+" gwei":"–"),
+        h("dt",null,"Base fee (latest block)"),h("dd",null,bf!=null?units(bf,9,3)+" gwei":"–"),
+        h("dt",null,"Typical transfer (21,000 gas)"),h("dd",null,gp!=null?units(gp*21000n,18,6)+" QMS":"–"),
+        h("dt",null,"Finality"),h("dd",null,"Not reported by this release")
+      ),
+      h("p","pnote","If a transaction stays pending, check that its gas price is above the base fee.")
+    );
+    const rows=b.slice(-8).reverse();
+    $("n-recent").replaceChildren(
+      h("h3",null,"Recent blocks",h("small",null,ex.height!=null?"explorer at #"+ex.height.toLocaleString("en-US"):"")),
+      ...(rows.length?rows.map(x=>{
+        const prev=blocks.get(x.n-1),dt=prev?x.ts-prev.ts:null;
+        const a=h("a","lrow",h("span",null,h("span","l1","#"+x.n.toLocaleString("en-US")),h("span","l2",x.tx+" tx · "+(x.gl?Math.round(x.gu/x.gl*100):0)+"% full")),h("span","r",dt!=null?dt+" s":"–",h("small",null,clock(x.ts*1000))));
+        a.href=SCAN+"/block/"+x.n;a.target="_blank";a.rel="noopener";return a;
+      }):[h("p","pnote","Waiting for blocks…")])
+    );
+  }
+  $("n-copy").addEventListener("click",async e=>{
+    const b=e.currentTarget,t=b.textContent;
+    try{await navigator.clipboard.writeText(snapshot());b.textContent="Copied"}catch(x){b.textContent="Copy failed"}
+    setTimeout(()=>b.textContent=t,1500);
   });
 
-  renderIncl();
-  try{
-    const q=new URLSearchParams(location.search).get("tx");
-    if(q&&(HASH.test(q.trim())||ADDR.test(q.trim()))){$("pq").value=q.trim();showTab("pulse");runInspect(q.trim())}
-    else if(location.hash==="#pulse")showTab("pulse");
-  }catch(e){}
+  /* ---------- revert decoding ---------- */
+  const PANIC={0x01:"an assert() failed",0x11:"arithmetic overflow or underflow",0x12:"division or modulo by zero",0x21:"an invalid enum value",0x22:"a corrupted storage byte array",0x31:"pop() on an empty array",0x32:"an array index out of bounds",0x41:"too much memory requested",0x51:"a call to an uninitialised function"};
+  function decodeRevert(data){
+    if(!data||typeof data!=="string"||!/^0x[0-9a-fA-F]*$/.test(data)||data.length<10)return null;
+    const sel=data.slice(0,10).toLowerCase(),body=data.slice(10);
+    try{
+      if(sel==="0x08c379a0"){
+        const len=parseInt(body.slice(64,128),16),hex=body.slice(128,128+len*2);
+        const bytes=new Uint8Array(hex.match(/../g).map(x=>parseInt(x,16)));
+        return {kind:"error",text:new TextDecoder().decode(bytes)};
+      }
+      if(sel==="0x4e487b71"){const c=parseInt(body.slice(0,64),16);return {kind:"panic",text:PANIC[c]||("panic code 0x"+c.toString(16))}}
+    }catch(e){}
+    return {kind:"custom",text:"custom error "+sel};
+  }
+  function revertFromError(e){
+    const d=decodeRevert(e&&e.data);if(d)return d;
+    const m=String((e&&e.message)||"");
+    const r=m.match(/revert(?:ed)?:?\s*(.+)$/i);
+    if(r&&r[1]&&!/^execution$/i.test(r[1].trim()))return {kind:"error",text:r[1].trim()};
+    if(/revert/i.test(m))return {kind:"empty",text:""};
+    return null;
+  }
+  function explorerReason(x){
+    if(!x)return null;let r=x.revert_reason;
+    if(r==null)return null;
+    if(typeof r==="object")r=r.raw||r.message||r.decoded||JSON.stringify(r);
+    r=String(r);if(!r)return null;
+    const d=decodeRevert(r);return d||{kind:"error",text:r};
+  }
+
+  /* ---------- Diagnose ---------- */
+  const dform=$("d-form"),din=$("d-in"),dmsg=$("d-msg"),dout=$("d-out"),dgo=$("d-go"),dsent=$("d-sent");
+  const dsay=(t,err)=>{dmsg.textContent=t||"";dmsg.classList.toggle("err",!!err)};
+  let dseq=0;
+  const ck=(k,t)=>h("li",null,h("span","ck "+k,k==="ok"?"✓":k==="no"?"✕":k==="warn"?"!":"i"),h("span",null,t));
+  async function diagnose(hash){
+    const my=++dseq;dgo.disabled=true;dsay("Checking…");dout.hidden=true;
+    const [txR,rcR,exR,hdR]=await Promise.allSettled([rpc("eth_getTransactionByHash",[hash]),rpc("eth_getTransactionReceipt",[hash]),getJSON(API+"/transactions/"+hash),rpc("eth_blockNumber")]);
+    if(my!==dseq)return;
+    dgo.disabled=false;
+    const rpcUp=ok(txR)||ok(rcR)||ok(hdR),exUp=ok(exR);
+    if(!rpcUp&&!exUp&&!(exR.reason&&exR.reason.status===404)){dsay("Couldn't reach QMS Testnet right now, so this transaction can't be checked. Try again in a moment.",true);return}
+    dsay("");
+    const tx=ok(txR)?txR.value:null,rc=ok(rcR)?rcR.value:null,x=exUp?exR.value:null;
+    const headNow=ok(hdR)?num(hdR.value):head;
+    const from=tx?tx.from:(x&&x.from?x.from.hash:null);
+    const to=tx?tx.to:(x&&x.to?x.to.hash:null);
+    const input=tx?tx.input:(x?x.raw_input:null);
+    const value=tx?big(tx.value):big(x&&x.value);
+    const gasLimit=tx?num(tx.gas):num(x&&x.gas_limit);
+    const gasUsed=rc?num(rc.gasUsed):num(x&&x.gas_used);
+    const gasPrice=rc&&rc.effectiveGasPrice?big(rc.effectiveGasPrice):(tx&&tx.gasPrice?big(tx.gasPrice):(x&&x.gas_price!=null?big(x.gas_price):null));
+    const nonce=tx?num(tx.nonce):num(x&&x.nonce);
+    const blockNum=rc?num(rc.blockNumber):(tx&&tx.blockNumber?num(tx.blockNumber):num(x&&x.block_number));
+    const isDeploy=!to||(x&&x.created_contract);
+    let state;                                   // ok | failed | pending | missing
+    if(rc)state=rc.status==="0x1"?"ok":(rc.status==="0x0"?"failed":"ok");
+    else if(x&&x.status)state=x.status==="ok"?"ok":(x.status==="error"?"failed":"pending");
+    else if(tx||x)state="pending";
+    else state="missing";
+    const checks=[],why=[];
+    checks.push(rpcUp?ck("ok","RPC is responding"):ck("warn","RPC didn't answer from your browser. Using explorer data instead."));
+    let verdict;
+    if(state==="missing"){
+      checks.push(ck("no","The network has no record of this hash"));
+      verdict=["bad","Not found","Not seen by the RPC or the explorer."];
+      why.push("The hash may be mistyped, from a different network, or the transaction was dropped before it was included. If you just sent it, wait a few seconds and check again.");
+    }else{
+      checks.push(ck("ok","Transaction found"+(from?" · from "+short(from):"")));
+      if(state==="pending"){
+        checks.push(ck("warn","Not included in a block yet"));
+        verdict=["wait","Pending","Waiting to be included in a block."];
+        const reasons=[];
+        try{
+          const [ln,pn]=await Promise.all([from?rpc("eth_getTransactionCount",[from,"latest"]):null,from?rpc("eth_getTransactionCount",[from,"pending"]):null]);
+          if(my!==dseq)return;
+          if(ln!=null&&nonce!=null&&num(ln)<nonce){checks.push(ck("warn","Waiting for an earlier transaction (nonce "+num(ln)+" comes before this one, nonce "+nonce+")"));reasons.push("An earlier transaction from the same wallet has not been included. This one cannot go first.")}
+        }catch(e){}
+        if(gasPrice!=null&&fee.bf!=null&&gasPrice<fee.bf){checks.push(ck("warn","Gas price is below the current base fee"));reasons.push("Its gas price ("+units(gasPrice,9,3)+" gwei) is under the current base fee ("+units(fee.bf,9,3)+" gwei), so it won't be picked up until fees fall. Resend with a higher fee.")}
+        const idle=head!=null&&headSeenAt?(Date.now()-headSeenAt)/1000:0;
+        if(idle>60){checks.push(ck("warn","No new block for "+secs(idle)));reasons.push("The network itself looks slow right now. Check the Network tab.")}
+        if(!reasons.length)reasons.push("Nothing looks wrong. Blocks arrive about every "+TARGET+" seconds, so it should be included shortly.");
+        why.push(...reasons);
+      }else{
+        checks.push(ck("ok","Included in block #"+(blockNum!=null?blockNum.toLocaleString("en-US"):"?")+(headNow!=null&&blockNum!=null?" · "+Math.max(0,headNow-blockNum)+" confirmations":"")));
+        if(state==="ok"){
+          checks.push(ck("ok","Execution succeeded"));
+          verdict=["ok","Succeeded","The transaction ran and its changes were applied."];
+        }else{
+          checks.push(ck("no","Execution failed, so its changes were reverted"));
+          verdict=["bad","Failed","Included in a block, but it reverted. The fee was still spent."];
+        }
+        if(gasLimit&&gasUsed!=null){
+          const u=gasUsed/gasLimit;
+          checks.push(ck(state==="failed"&&u>=.98?"no":"info","Gas used "+gasUsed.toLocaleString("en-US")+" of "+gasLimit.toLocaleString("en-US")+" ("+Math.round(u*100)+"%)"));
+        }
+        if(state==="ok"){
+          const logs=rc?(rc.logs||[]).length:null;
+          const addr=rc&&rc.contractAddress?rc.contractAddress:(x&&x.created_contract?x.created_contract.hash:null);
+          if(isDeploy){
+            if(addr){
+              try{
+                const code=await rpc("eth_getCode",[addr,"latest"]);if(my!==dseq)return;
+                if(code&&code!=="0x"){checks.push(ck("ok","Contract is live at "+short(addr)+" · "+((code.length-2)/2).toLocaleString("en-US")+" bytes of code"))}
+                else{checks.push(ck("no","The deployment succeeded but no code exists at "+short(addr)));verdict=["warn","Succeeded, but empty","No contract code was stored. The init code may have returned nothing."]}
+              }catch(e){checks.push(ck("info","Contract address "+short(addr)+" (code check unavailable)"))}
+            }else checks.push(ck("warn","No contract address in the receipt"));
+          }else if(to){
+            let code="0x";
+            try{code=await rpc("eth_getCode",[to,"latest"]);if(my!==dseq)return}catch(e){code=null}
+            const hasData=input&&input!=="0x"&&input.length>2;
+            if(code==="0x"&&hasData){checks.push(ck("warn","The target "+short(to)+" is not a contract. The call data did nothing."));verdict=["warn","Succeeded, but nothing ran","The target address has no contract code, so the call data had no effect."]}
+            else if(code&&code!=="0x"){checks.push(ck("ok","Called a contract"+(logs!=null?" · "+logs+" event"+(logs===1?"":"s")+" emitted":"")));if(logs===0&&hasData)checks.push(ck("info","No events were emitted. That can be normal, but check the result on the contract if you expected one."))}
+            else if(!hasData)checks.push(ck("info","Plain QMS transfer"));
+          }
+        }
+        if(state==="failed"){
+          let rev=explorerReason(x),replayNote=null;
+          if(tx&&blockNum!=null&&blockNum>0){
+            const call={from:tx.from,data:tx.input,value:tx.value};if(tx.to)call.to=tx.to;
+            try{
+              await rpc("eth_call",[call,"0x"+(blockNum-1).toString(16)]);
+              replayNote="Replaying the call just before this block did not fail, so the state changed between blocks. It can't be reproduced exactly.";
+            }catch(e){
+              if(e.rpc){const r=revertFromError(e);if(r&&(r.kind!=="empty"||!rev))rev=r}
+              else replayNote="The RPC couldn't replay this call.";
+            }
+            if(my!==dseq)return;
+          }
+          const used=gasLimit&&gasUsed!=null?gasUsed/gasLimit:0;
+          if(rev&&rev.kind==="error"&&rev.text)why.push("The contract rejected the call: “"+rev.text+"”. One of its own checks failed, so look at the inputs and the contract's state (balance, allowance, permissions).");
+          else if(rev&&rev.kind==="panic")why.push("The contract hit a built-in error: "+rev.text+". This is usually a bug in the contract or an unexpected input.");
+          else if(rev&&rev.kind==="custom")why.push("The contract rejected the call with a "+rev.text+". Look up that error in the contract's source or ABI to see what it means.");
+          else if(used>=.98)why.push("It used almost all of its gas limit and gave no reason, so it most likely ran out of gas. Resend with a higher gas limit.");
+          else if(isDeploy)why.push("The contract's constructor reverted without a message. Check the constructor arguments and the compiled bytecode.");
+          else why.push("It reverted without a message. That usually means a require() with no reason, a call to a function that doesn't exist, or a payment sent to a function that doesn't accept it.");
+          if(rev&&rev.kind!=="empty"&&rev.text)checks.push(ck("no","Reason: "+rev.text));
+          if(replayNote)why.push(replayNote);
+        }
+      }
+    }
+    if(my!==dseq)return;
+    const kids=[h("div","verdict "+verdict[0],h("b",null,verdict[1]),h("span",null,verdict[2])),card("Checks",null,h("ul","checks",checks))];
+    if(why.length)kids.push(card(state==="failed"?"What probably happened":"What this means",null,h("div","why",why.map(t=>h("p",null,t)))));
+    const kv=[["Hash",short(hash)],["From",from?short(from):"–"],[isDeploy?"Creates":"To",to?short(to):(x&&x.created_contract?short(x.created_contract.hash):"–")],["Value",units(value)+" QMS"],["Fee",gasPrice!=null&&gasUsed!=null?units(gasPrice*BigInt(gasUsed),18,6)+" QMS":"–"],["Gas price",gasPrice!=null?units(gasPrice,9,3)+" gwei":"–"],["Nonce",nonce!=null?String(nonce):"–"]];
+    const sentRec=sent.find(s=>s.hash.toLowerCase()===hash.toLowerCase());
+    if(sentRec&&sentRec.doneAt)kv.push(["Sent → seen on chain",((sentRec.doneAt-sentRec.sentAt)/1000).toFixed(0)+" s (measured here)"]);
+    const dl=h("dl","kv");kv.forEach(([k,v])=>dl.append(h("dt",null,k),h("dd",null,v)));
+    const acts=h("div","pacts");
+    const cp=h("button","btn ghost sm","Copy report");cp.type="button";
+    cp.addEventListener("click",async()=>{
+      const rep=["QMS Pulse report · "+new Date().toISOString(),"Tx: "+hash,"Result: "+verdict[1]+" – "+verdict[2],...checks.map(c=>"- "+c.lastChild.textContent),...why.map(t=>"Note: "+t)].join("\n");
+      try{await navigator.clipboard.writeText(rep);cp.textContent="Copied"}catch(e){cp.textContent="Copy failed"}
+      setTimeout(()=>cp.textContent="Copy report",1500);
+    });
+    acts.append(cp,link(SCAN+"/tx/"+hash,"Open on explorer ↗"));
+    kids.push(card("Details",null,dl,h("div",null,acts)));
+    dout.replaceChildren(...kids);dout.hidden=false;
+  }
+  dform.addEventListener("submit",e=>{
+    e.preventDefault();const v=din.value.trim();
+    if(!HASH.test(v)){dout.hidden=true;dsay("That doesn't look like a transaction hash. It should start with 0x and have 66 characters.",true);return}
+    diagnose(v);
+  });
+
+  /* transactions sent from this page (GM / Deploy): measured inclusion time */
+  let sent=[];
+  try{sent=JSON.parse(sessionStorage.getItem("pulse.sent")||"[]")}catch(e){}
+  const saveSent=()=>{try{sessionStorage.setItem("pulse.sent",JSON.stringify(sent.slice(0,10)))}catch(e){}};
+  function drawSent(){
+    if(!sent.length){dsent.replaceChildren();return}
+    const done=sent.filter(s=>s.doneAt&&!s.timedOut).map(s=>(s.doneAt-s.sentAt)/1000);
+    dsent.replaceChildren(card("Sent from this page",done.length?"median "+secs(med(done))+" to be included":"",
+      sent.slice(0,6).map(s=>{
+        const t=s.timedOut?"not seen yet":(s.doneAt?secs((s.doneAt-s.sentAt)/1000):"waiting…");
+        const row=h("div","lrow",h("span",null,h("span","l1",(s.kind==="gm"?"GM":"Deploy")+" · "+short(s.hash),s.status==="failed"?h("span","st bad","failed"):null),h("span","l2",clock(s.sentAt)+" · time to inclusion "+t)));
+        const b=h("button","btn ghost sm","Diagnose");b.type="button";b.addEventListener("click",()=>go(s.hash));row.append(b);return row;
+      }),
+      h("p","pnote","Measured from when your wallet returned the hash until the receipt appeared, about 2 s resolution.")));
+  }
+  addEventListener("pulse:sent",e=>{const d=e.detail;if(!d)return;sent.unshift({hash:d.hash,kind:d.kind,sentAt:d.sentAt});saveSent();drawSent()});
+  addEventListener("pulse:done",e=>{const d=e.detail,s=d&&sent.find(x=>x.hash===d.hash);if(!s)return;Object.assign(s,{doneAt:d.doneAt,status:d.status,block:d.block,timedOut:d.timedOut});saveSent();drawSent()});
+  drawSent();
+  function go(hash){show("diagnose");din.value=hash;diagnose(hash);dform.scrollIntoView({block:"nearest"})}
+
+  /* ---------- Apps tab ---------- */
+  const aform=$("a-form"),ain=$("a-in"),amsg=$("a-msg"),aout=$("a-out"),ago=$("a-go"),asites=$("a-sites");
+  const asay=(t,err)=>{amsg.textContent=t||"";amsg.classList.toggle("err",!!err)};
+  let aseq=0;
+  async function checkApp(addr){
+    const my=++aseq;ago.disabled=true;asay("Checking…");aout.hidden=true;
+    const [codeR,infoR,txsR,balR]=await Promise.allSettled([rpc("eth_getCode",[addr,"latest"]),getJSON(API+"/addresses/"+addr),getJSON(API+"/addresses/"+addr+"/transactions"),rpc("eth_getBalance",[addr,"latest"])]);
+    if(my!==aseq)return;ago.disabled=false;
+    if(!ok(codeR)&&!ok(infoR)&&!(infoR.reason&&infoR.reason.status===404)){asay("Couldn't reach QMS Testnet right now. Try again in a moment.",true);return}
+    asay("");
+    const code=ok(codeR)?codeR.value:null,info=ok(infoR)?infoR.value:null;
+    const items=ok(txsR)&&txsR.value&&Array.isArray(txsR.value.items)?txsR.value.items:[];
+    const isC=code!=null?(code!=="0x"):!!(info&&info.is_contract);
+    let v;
+    if(isC)v=["ok","Contract is deployed","Code exists on QMS Testnet at this address."];
+    else if(info&&(items.length||big(info.coin_balance)>0n)||(ok(balR)&&big(balR.value)>0n))v=["warn","This is a wallet, not a contract","There is no contract code here. Use the Wallet tab to look at it."];
+    else v=["bad","Nothing at this address","No contract code and no activity. The deployment may have failed, or this is a different network."];
+    const kids=[h("div","verdict "+v[0],h("b",null,v[1]),h("span",null,v[2]))];
+    const kv=h("dl","kv");
+    const row=(k,val)=>kv.append(h("dt",null,k),h("dd",null,val));
+    row("Address",short(addr));
+    if(isC&&code)row("Code size",((code.length-2)/2).toLocaleString("en-US")+" bytes");
+    if(info){
+      if(info.name)row("Name",info.name);
+      if(isC)row("Source verified",info.is_verified?"Yes":"No");
+      if(info.creator_address_hash)row("Created by",short(info.creator_address_hash));
+    }
+    const bal=info&&info.coin_balance!=null?info.coin_balance:(ok(balR)?String(BigInt(balR.value)):null);
+    if(bal!=null)row("Balance",units(bal)+" QMS");
+    if(info&&info.creation_transaction_hash)kv.append(h("dt",null,"Deployment tx"),(()=>{const dd=h("dd");const b=h("button","btn ghost sm","Diagnose "+short(info.creation_transaction_hash));b.type="button";b.addEventListener("click",()=>go(info.creation_transaction_hash));dd.append(b);return dd})());
+    kids.push(card("Overview",null,kv));
+    if(items.length){
+      const bad=items.filter(t=>t.status==="error"||t.result==="error");
+      const stamps=items.map(t=>new Date(t.timestamp).getTime()).filter(isFinite);
+      const last=stamps.length?Math.max(...stamps):null;
+      const meth={};items.forEach(t=>{const m=t.method||(t.created_contract?"deploy":"transfer");meth[m]=(meth[m]||0)+1});
+      kids.push(card("Recent activity","last "+items.length+" transactions",
+        h("div","tiles",tile("Succeeded",pct(items.length-bad.length,items.length),(items.length-bad.length)+" of "+items.length),tile("Failed",String(bad.length),bad.length?"see below":"none"),tile("Last activity",last?secs((Date.now()-last)/1000)+" ago":"–"),tile("Top method",Object.entries(meth).sort((a,b)=>b[1]-a[1])[0][0]))));
+      if(bad.length)kids.push(card("Failed calls","tap Diagnose for the reason",bad.slice(0,5).map(t=>{
+        const r=explorerReason(t),row=h("div","lrow",h("span",null,h("span","l1",(t.method?String(t.method):"call")+" · "+short(t.hash)),h("span","l2",(r&&r.text?r.text:"no reason given")+" · "+secs((Date.now()-new Date(t.timestamp).getTime())/1000)+" ago")));
+        const b=h("button","btn ghost sm","Diagnose");b.type="button";b.addEventListener("click",()=>go(t.hash));row.append(b);return row;
+      })));
+    }else if(isC)kids.push(card("Recent activity",null,h("p","pnote","No transactions found for this contract yet. If you expected some, check you are on the right contract address.")));
+    kids.push(h("div","pacts",link(SCAN+"/address/"+addr,"Open on explorer ↗")));
+    aout.replaceChildren(...kids);aout.hidden=false;
+  }
+  aform.addEventListener("submit",e=>{
+    e.preventDefault();const v=ain.value.trim();
+    if(!ADDR.test(v)){aout.hidden=true;asay("That doesn't look like an address. It should start with 0x and have 42 characters.",true);return}
+    checkApp(v);
+  });
+
+  /* service reachability */
+  let sitesAt=0,sitesBusy=false;
+  async function probe(name,fn){const t0=performance.now();try{await fn();return {name,ok:true,ms:performance.now()-t0}}catch(e){return {name,ok:false,ms:null}}}
+  async function checkSites(force){
+    if(sitesBusy||(!force&&Date.now()-sitesAt<30000))return;
+    sitesBusy=true;
+    const noCors=u=>fetch(u,{mode:"no-cors",cache:"no-store"});
+    const res=await Promise.all([
+      probe("QMS RPC",()=>rpc("eth_chainId")),
+      probe("QMS Explorer",()=>getJSON(API+"/main-page/blocks")),
+      probe("Faucet",()=>noCors(FAUCET)),
+      probe("Qwap",()=>noCors(QWAP))
+    ]);
+    sitesBusy=false;sitesAt=Date.now();
+    const b=h("button","btn ghost sm","Check again");b.type="button";b.addEventListener("click",()=>checkSites(true));
+    asites.replaceChildren(card("Ecosystem reachability","from your browser",
+      res.map(r=>h("div","lrow",h("span",null,h("span","l1",r.name)),h("span","r",h("span","st"+(r.ok?"":" bad"),r.ok?"responding":"no response"),h("small",null,r.ok?ms(r.ms):"")))),
+      h("div","pacts",b)));
+  }
+
+  /* ---------- Wallet tab: reliability card ---------- */
+  addEventListener("pulse:wallet",e=>{
+    const d=e.detail;if(!d||!d.items||!d.items.length)return;
+    const out=$("dout"),old=out.querySelector("[data-pulse]");if(old)old.remove();
+    const items=d.items.slice(0,50),bad=items.filter(t=>t.status==="error"||t.result==="error");
+    const deploys=items.filter(t=>t.created_contract);
+    const kids=[h("div","tiles",tile("Success rate",pct(items.length-bad.length,items.length),"last "+items.length+" transactions"),tile("Failed",String(bad.length),bad.length?"details below":"none"),tile("Deployments",String(deploys.length),deploys.length?(deploys.filter(t=>!(t.status==="error"||t.result==="error")).length+" succeeded"):"none seen"))];
+    bad.slice(0,4).forEach(t=>{
+      const r=explorerReason(t),row=h("div","lrow",h("span",null,h("span","l1",(t.method?String(t.method):(t.created_contract?"Deploy":"Call"))+" · "+short(t.hash)),h("span","l2",r&&r.text?r.text:"no reason given")));
+      const b=h("button","btn ghost sm","Diagnose");b.type="button";b.addEventListener("click",()=>go(t.hash));row.append(b);kids.push(row);
+    });
+    deploys.slice(0,3).forEach(t=>{
+      const fail=t.status==="error"||t.result==="error",a=t.created_contract&&t.created_contract.hash;
+      const row=h("div","lrow",h("span",null,h("span","l1","Deployment",h("span","st"+(fail?" bad":""),fail?"failed":"ok")),h("span","l2",a?short(a):short(t.hash))));
+      const b=h("button","btn ghost sm",fail?"Diagnose":"Check");b.type="button";b.addEventListener("click",()=>{if(fail||!a)go(t.hash);else{show("apps");ain.value=a;checkApp(a)}});row.append(b);kids.push(row);
+    });
+    const c=card("Reliability","QMS Pulse",...kids);c.dataset.pulse="1";c.style.display="grid";c.style.gap="10px";
+    out.append(c);
+  });
+
+  /* ?tx=0x… deep link */
+  try{const q=new URLSearchParams(location.search).get("tx");if(q&&HASH.test(q.trim())){show("diagnose");din.value=q.trim();diagnose(q.trim())}}catch(e){}
 })();
 </script>
+
 </body>
 </html>
