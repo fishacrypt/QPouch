@@ -45,7 +45,6 @@
   .hero .sub{margin:0 0 22px;max-width:480px}
   .hero .cta{justify-content:flex-start}
   .panel{position:relative;overflow:hidden;border-radius:18px;background:#F4F4F4;color:var(--ink);padding:clamp(12px,2.4vw,18px)}
-  .gshapes{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
   .panel-in{position:relative;z-index:1}
   .panel .dd{background:#fff}
   .panel .grid{grid-template-columns:1fr}
@@ -132,23 +131,43 @@
     .kv dd{text-align:left;margin-bottom:4px}
   }
 
-  /* games */
-  .gpanel{position:relative;overflow:hidden;border-radius:18px;background:var(--teal);color:#fff;padding:clamp(16px,3.4vw,28px)}
-  .gin{position:relative;z-index:1}
-  .geye{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.82);margin-bottom:8px}
-  .ghead h2{font-size:clamp(24px,3.6vw,34px);max-width:560px;margin-bottom:16px}
-  .ggrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .gcard{background:#fff;color:var(--ink);border-radius:14px;padding:clamp(14px,2.6vw,20px);display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-  .gcard h3{font-size:18px;letter-spacing:-.01em}
-  .gcard p{font-size:14px;color:var(--muted);flex:1}
-  .gtags{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
-  .gtags li{border:1px solid var(--line);border-radius:8px;padding:2px 9px;font-size:12.5px;font-weight:600}
+  /* QP arcade */
+  #games{background:#F7F8FA;padding:clamp(28px,5vw,48px) 0}
+  #games .qa-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:clamp(16px,3vw,24px)}
+  #games .qa-eye{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--muted);margin-bottom:8px}
+  #games .qa-eye b{color:var(--teal);font-weight:700}
+  #games .qa-head h2{font-size:clamp(26px,4vw,38px);margin-bottom:6px}
+  #games .qa-sub{font-size:15px;color:#737373}
+  #games .qa-count{font-size:12px;letter-spacing:.12em;font-weight:600;color:#737373;border:1px solid #EAEAEA;background:#fff;border-radius:999px;padding:6px 12px}
+  #games .qa-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,18px);list-style:none}
+  #games .qa-card{display:flex;flex-direction:column;background:#fff;border:1px solid #EAEAEA;border-radius:18px;overflow:hidden;transition:transform 220ms ease,box-shadow 220ms ease,border-color 220ms ease}
+  #games .qa-card:hover,#games .qa-card:focus-within{transform:translateY(-5px);box-shadow:0 14px 30px rgba(23,23,23,.08);border-color:#dcdcdc}
+  #games .qa-art{position:relative;height:clamp(120px,14vw,150px);display:grid;place-items:center;transition:filter 220ms ease}
+  #games .qa-card:hover .qa-art{filter:saturate(1.35)}
+  #games .qa-art svg{width:100%;height:100%;display:block}
+  #games .qa-rush .qa-art{background:#E9F5ED}
+  #games .qa-mind .qa-art{background:#F0EBFA}
+  #games .qa-dive .qa-art{background:#E4F3F4}
+  #games .qa-num{position:absolute;top:12px;left:14px;font-size:11px;letter-spacing:.12em;font-weight:700;color:#171717;background:rgba(255,255,255,.8);border-radius:6px;padding:2px 8px}
+  #games .qa-body{display:flex;flex-direction:column;gap:10px;flex:1;padding:clamp(14px,2.4vw,20px)}
+  #games .qa-cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:#737373}
+  #games .qa-body h3{font-size:clamp(18px,2vw,21px);letter-spacing:-.015em;color:#171717}
+  #games .qa-body .qa-desc{font-size:14px;color:#737373;flex:1}
+  #games .qa-tags{list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+  #games .qa-tags li{border:1px solid #EAEAEA;border-radius:7px;padding:2px 8px;font-size:10.5px;letter-spacing:.07em;font-weight:700;color:#171717}
+  #games .qa-play{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:#171717;color:#fff;border:1px solid #171717;border-radius:10px;padding:11px 18px;font:700 13px/1 inherit;font-family:inherit;letter-spacing:.06em;cursor:pointer;transition:transform 180ms ease,background 180ms ease,border-color 180ms ease}
+  #games .qa-play:hover{background:var(--teal);border-color:var(--teal);transform:translateX(2px)}
+  #games .qa-play[aria-disabled=true]{opacity:.5;pointer-events:none}
+  #games .qa-play:focus-visible{outline:2px solid #171717;outline-offset:3px}
+  #games .qa-foot{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:clamp(16px,3vw,22px);font-size:13px;color:#737373}
+  @media(max-width:767px){#games .qa-grid{grid-template-columns:1fr}#games .qa-art{height:130px}#games .qa-head{align-items:flex-start}}
+  @media(max-width:900px) and (min-width:768px){#games .qa-body .qa-desc{font-size:13.5px}#games .qa-play{padding:10px 14px}}
+  @media(prefers-reduced-motion:reduce){#games .qa-card,#games .qa-art,#games .qa-play{transition:none}#games .qa-card:hover,#games .qa-card:focus-within{transform:none}#games .qa-play:hover{transform:none}}
   .gmodal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;padding:12px;z-index:60}
   .gmodal[hidden]{display:none}
   .gbox{position:relative;width:min(520px,100%);height:min(860px,100%);background:#000;border-radius:14px;overflow:hidden}
   .gbox iframe{display:block;width:100%;height:100%;border:0;background:#fff}
   .gclose{position:absolute;top:8px;left:8px;z-index:2;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:#111;font-size:22px;line-height:1;cursor:pointer}
-  @media(max-width:640px){.ggrid{grid-template-columns:1fr}}
 
   /* sections */
   section{padding:clamp(32px,5vw,44px) 0;border-top:1px solid var(--line)}
@@ -339,7 +358,6 @@
     <p class="meta">v0.3.0 · Chrome, Brave, Edge &amp; other Chromium browsers · Unofficial, testnet only</p>
     </div>
     <aside class="panel">
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><path id="pad" fill-rule="evenodd" d="M-45 -28C-62 -28 -72 4 -70 30C-69 44 -58 47 -50 36L-40 22H40L50 36C58 47 69 44 70 30C72 4 62 -28 45 -28Z M-46 -12h8v8h8v8h-8v8h-8v-8h-8v-8h8z M34 -12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0z M44 -2a4 4 0 1 0 8 0a4 4 0 1 0 -8 0z M34 8a4 4 0 1 0 8 0a4 4 0 1 0 -8 0z M24 -2a4 4 0 1 0 8 0a4 4 0 1 0 -8 0z M-20 8a6 6 0 1 0 12 0a6 6 0 1 0 -12 0z M8 8a6 6 0 1 0 12 0a6 6 0 1 0 -12 0z"/></defs></svg>
       <div class="panel-in">
       <details class="dd" id="features">
         <summary><span><span class="eyebrow">Features</span><span class="dd-h">Everything you need, nothing you don't.</span></span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
@@ -454,57 +472,51 @@
     </div>
   </section>
 
-  
-<section id="games">
-  <div class="wrap">
-    <div class="gpanel">
-      <svg class="gshapes" viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
-        <use href="#pad" transform="translate(842 292) rotate(-14) scale(3.2)" fill="#000" opacity=".14"/>
-        <use href="#pad" transform="translate(830 278) rotate(-14) scale(3.2)" fill="#fff" opacity=".18"/>
-        <g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".2">
-          <circle cx="92" cy="86" r="24"/>
-          <path d="M470 40l24 42h-48z"/>
-          <path d="M70 300l36 36m0-36l-36 36"/>
-          <rect x="640" y="300" width="42" height="42" rx="5"/>
-          <path d="M300 300h22v22h22v22h-22v22h-22v-22h-22v-22h22z" transform="rotate(10 300 340)"/>
-          <circle cx="930" cy="80" r="32"/><circle cx="930" cy="80" r="11"/>
-        </g>
-        <g fill="#000" opacity=".1"><circle cx="190" cy="200" r="5"/><circle cx="560" cy="120" r="5"/><circle cx="760" cy="60" r="4"/><circle cx="400" cy="380" r="4"/></g>
-      </svg>
-
-      <div class="gin">
-        <div class="ghead">
-          <p class="geye">Games</p>
-          <h2>Play while you wait for the next block.</h2>
+  <section id="games" aria-labelledby="qaTitle">
+    <div class="wrap">
+      <div class="qa-head">
+        <div>
+          <p class="qa-eye"><b>QP</b> / Arcade</p>
+          <h2 id="qaTitle">A little fun between blocks.</h2>
+          <p class="qa-sub">Step away from transactions. Enter the arcade.</p>
         </div>
-
-        <div class="ggrid">
-          <article class="gcard">
-            <h3>Qpouch Rush</h3>
-            <p>A 30-second reaction game. Pop floating Qpouch characters, chain combos and beat your best.</p>
-            <ul class="gtags"><li>30 s</li><li>Combos</li><li>Personal best</li></ul>
-            <button class="btn primary" type="button" data-game="games/rush/index.html" data-title="Qpouch Rush">Play</button>
-          </article>
-
-          <article class="gcard">
-            <h3>Qpouch Mind Rush</h3>
-            <p>Find the numbers 1 to 50 in order on a circular board. Pick Classic, Hardcore, Zen or Daily.</p>
-            <ul class="gtags"><li>4 modes</li><li>Daily board</li><li>Personal best</li></ul>
-            <button class="btn primary" type="button" data-game="games/mind/index.html" data-title="Qpouch Mind Rush">Play</button>
-          </article>
-
-          <article class="gcard">
-            <h3>Dive</h3>
-            <p>A QMS-inspired mining simulation. Build your rig, solve challenges, manage your farm and progress through the mining experience.</p>
-            <ul class="gtags"><li>Mining</li><li>Challenges</li><li>Progression</li></ul>
-            <button class="btn primary" type="button" data-game="https://dive-lemon.vercel.app/" data-title="Dive">Play</button>
-          </article>
-        </div>
+        <p class="qa-count" id="qaCount">2 GAMES LIVE · 1 SOON</p>
       </div>
+      <ul class="qa-grid">
+        <li class="qa-card qa-rush">
+          <div class="qa-art" aria-hidden="true"><span class="qa-num">01</span><svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><g fill="none" stroke="#2f9e57" stroke-width="3" stroke-linecap="round" opacity=".45"><path d="M28 36l7 7m0-7l-7 7"/><circle cx="212" cy="30" r="7"/><path d="M196 122l9 9m0-9l-9 9"/><path d="M40 112a6 6 0 1 0 12 0a6 6 0 1 0-12 0"/></g><g transform="translate(120 78)"><circle r="46" fill="#fff" opacity=".55"/><circle r="32" fill="#bfe5cb"/><rect x="-17" y="-24" width="34" height="46" rx="10" fill="#2f9e57"/><rect x="-12" y="-30" width="24" height="9" rx="3" fill="#237a43"/><circle cx="-6" cy="-3" r="3.4" fill="#fff"/><circle cx="7" cy="-3" r="3.4" fill="#fff"/><path d="M-7 8q7 7 14 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></g><g fill="#2f9e57" opacity=".5"><circle cx="64" cy="48" r="5"/><circle cx="184" cy="108" r="5"/><circle cx="178" cy="46" r="3"/></g></svg></div>
+          <div class="qa-body">
+            <p class="qa-cat">Reaction game</p>
+            <h3>Qpouch Rush</h3>
+            <p class="qa-desc">A fast-paced 30-second reaction challenge. Pop floating Qpouch characters, chain combos and beat your best.</p>
+            <ul class="qa-tags"><li>30 SECONDS</li><li>COMBO MULTIPLIER</li><li>PERSONAL BEST</li></ul>
+            <button class="qa-play" type="button" data-game="games/rush/index.html" data-title="Qpouch Rush" aria-label="Play Qpouch Rush">PLAY ↗</button>
+          </div>
+        </li>
+        <li class="qa-card qa-mind">
+          <div class="qa-art" aria-hidden="true"><span class="qa-num">02</span><svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><circle cx="120" cy="78" r="62" fill="#fff" opacity=".55"/><circle cx="120" cy="78" r="62" fill="none" stroke="#7a52c9" stroke-width="2.5" opacity=".5"/><circle cx="120" cy="78" r="24" fill="#d9ccf2"/><circle cx="120" cy="28" r="13" fill="#fff" stroke="#7a52c9" stroke-width="2"/><text x="120" y="32.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" fill="#4b2f8f">1</text><circle cx="163" cy="38" r="13" fill="#fff" stroke="#7a52c9" stroke-width="2"/><text x="163" y="42.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" fill="#4b2f8f">2</text><circle cx="192" cy="78" r="13" fill="#fff" stroke="#7a52c9" stroke-width="2"/><text x="192" y="82.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" fill="#4b2f8f">3</text><circle cx="163" cy="118" r="13" fill="#fff" stroke="#7a52c9" stroke-width="2"/><text x="163" y="122.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" fill="#4b2f8f">4</text><circle cx="120" cy="128" r="13" fill="#fff" stroke="#7a52c9" stroke-width="2"/><text x="120" y="132.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" fill="#4b2f8f">5</text><circle cx="77" cy="118" r="13" fill="#fff" stroke="#7a52c9" stroke-width="2"/><text x="77" y="122.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" fill="#4b2f8f">6</text><circle cx="48" cy="78" r="13" fill="#fff" stroke="#7a52c9" stroke-width="2"/><text x="48" y="82.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" fill="#4b2f8f">7</text><circle cx="77" cy="38" r="13" fill="#fff" stroke="#7a52c9" stroke-width="2"/><text x="77" y="42.5" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="800" fill="#4b2f8f">8</text><text x="120" y="85" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="800" fill="#4b2f8f">50</text></svg></div>
+          <div class="qa-body">
+            <p class="qa-cat">Brain game</p>
+            <h3>Qpouch Mind Rush</h3>
+            <p class="qa-desc">Find numbers 1–50 in the correct order. Challenge yourself across four different game modes.</p>
+            <ul class="qa-tags"><li>4 GAME MODES</li><li>DAILY CHALLENGE</li><li>PERSONAL BEST</li></ul>
+            <button class="qa-play" type="button" data-game="games/mind/index.html" data-title="Qpouch Mind Rush" aria-label="Play Qpouch Mind Rush">PLAY ↗</button>
+          </div>
+        </li>
+        <li class="qa-card qa-dive">
+          <div class="qa-art" aria-hidden="true"><span class="qa-num">03</span><svg viewBox="0 0 240 150" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><g fill="none" stroke="#0e8a91" stroke-width="3" stroke-linecap="round" opacity=".4"><path d="M20 40h40v22h36"/><path d="M220 44h-36v26h-30"/><path d="M24 118h52v-18h22"/><path d="M216 112h-44v-16h-20"/></g><g fill="#0e8a91" opacity=".5"><circle cx="20" cy="40" r="4"/><circle cx="220" cy="44" r="4"/><circle cx="24" cy="118" r="4"/><circle cx="216" cy="112" r="4"/></g><rect x="86" y="42" width="68" height="68" rx="12" fill="#fff" opacity=".7"/><rect x="96" y="52" width="48" height="48" rx="8" fill="#0e8a91"/><rect x="108" y="64" width="24" height="24" rx="4" fill="#bfe6e8"/><g stroke="#0e8a91" stroke-width="3" stroke-linecap="round"><path d="M100 42v-8M120 42v-8M140 42v-8M100 110v8M120 110v8M140 110v8M86 62h-8M86 76h-8M86 90h-8M154 62h8M154 76h8M154 90h8"/></g></svg></div>
+          <div class="qa-body">
+            <p class="qa-cat">Mining simulator</p>
+            <h3>Dive</h3>
+            <p class="qa-desc">Build your rig, solve challenges and manage your mining farm in a QMS-inspired mining simulation.</p>
+            <ul class="qa-tags"><li>MINING</li><li>CHALLENGES</li><li>PROGRESSION</li></ul>
+            <a class="qa-play" id="diveBtn" href="#" target="_blank" rel="noopener" aria-label="Play Dive" aria-disabled="true">COMING SOON</a>
+          </div>
+        </li>
+      </ul>
+      <p class="qa-foot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h4M8 10v4"/><path d="M15 13h.01M18 11h.01"/><path d="M17.3 5H6.7a4 4 0 0 0-3.9 3.2l-1.3 6.2A3 3 0 0 0 4.4 18c1 0 1.9-.6 2.4-1.5l.7-1.5h9l.7 1.5c.5.9 1.4 1.5 2.4 1.5a3 3 0 0 0 2.9-3.6l-1.3-6.2A4 4 0 0 0 17.3 5z"/></svg>More games. More challenges. More fun.</p>
     </div>
-  </div>
-</section>
-
+  </section>
 
 
   
@@ -891,6 +903,8 @@
   </div>
 </div>
 <script>
+  const DIVE_URL="";
+  (function(){var d=document.getElementById("diveBtn"),c=document.getElementById("qaCount");if(d&&/^https:\/\//.test(DIVE_URL)){d.href=DIVE_URL;d.textContent="PLAY ↗";d.removeAttribute("aria-disabled");if(c)c.textContent="3 GAMES AVAILABLE"}})();
   (function(){
     var m=document.getElementById("gmodal"),f=document.getElementById("gframe"),c=document.getElementById("gclose");
     function close(){m.hidden=true;f.src="about:blank";document.body.style.overflow=""}
