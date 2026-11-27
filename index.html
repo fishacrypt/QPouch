@@ -299,6 +299,22 @@
   .log li a{text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
   .log li span.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--muted)}
 
+  /* Fairness Lab */
+  #fairness{scroll-margin-top:20px}
+  #fairnessForm{display:grid;gap:8px;margin-top:16px}
+  #fairnessForm label{font-size:13px;font-weight:600}
+  #fairnessForm input,
+  #fairnessForm select{
+    width:100%;min-width:0;border:1px solid var(--line);
+    border-radius:10px;padding:12px 14px;font:inherit;
+    font-size:14px;color:var(--ink);background:#fff
+  }
+  #fairnessForm input:focus,
+  #fairnessForm select:focus{outline:2px solid var(--ink);outline-offset:1px}
+  #fairnessForm .btn{justify-self:start;margin-top:6px}
+  #fairnessResult{margin-top:12px;border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--soft);font-size:14px;overflow-wrap:anywhere}
+  #fairnessResult[hidden]{display:none}
+
   /* dropdowns */
   .dd{border:1px solid var(--line);border-radius:14px;background:#fff}
   .dd+.dd{margin-top:10px}
@@ -391,6 +407,7 @@
       <a class="nl" href="#features">Features</a>
       <a class="nl" href="#install">Install</a>
       <a class="nl" href="#dashboard" data-spy="dashboard">Dashboard</a>
+      <a class="nl" href="#fairness" data-spy="fairness">Fairness Lab</a>
       <a class="nl" href="#games" data-spy="games">Games</a>
       <div class="dapp">
         <button class="nl" id="dappBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="dappMenu">dApp <svg class="dchev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -559,6 +576,48 @@
         <p class="hint" id="a-msg" role="status"></p>
         <div class="dout" id="a-out" hidden></div>
         <div class="dout" id="a-sites"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fairness" aria-labelledby="fairnessTitle">
+    <div class="wrap">
+      <div class="dhead">
+        <p class="eyebrow">Transparency / Verification</p>
+        <h2 id="fairnessTitle">Fairness Lab</h2>
+        <p class="dsub">Independently inspect cryptographic commitments and verify that a revealed raffle seed matches its original SHA-256 fingerprint.</p>
+      </div>
+
+      <div class="tryc">
+        <div class="tryc-title">
+          <h3>QMS Raffle Verifier</h3>
+          <span class="chip">SHA-256</span>
+        </div>
+
+        <p class="hint">Enter the published commitment and the seed revealed after the draw. Verification will run locally in your browser.</p>
+
+        <form id="fairnessForm" autocomplete="off">
+          <label for="fairnessCommitment">Published SHA-256 commitment</label>
+          <input id="fairnessCommitment" type="text" spellcheck="false" autocapitalize="off"
+            value="3005ddf26626d7589d9cacde650a6b556343b3cabd8297977e7048a31d4c4b9f">
+
+          <label for="fairnessSeed">Revealed seed</label>
+          <input id="fairnessSeed" type="text" spellcheck="false" autocapitalize="off"
+            placeholder="Paste the revealed seed">
+
+          <label for="fairnessEncoding">Seed encoding</label>
+          <select id="fairnessEncoding">
+            <option value="">Select an encoding to test</option>
+            <option value="utf8">UTF-8 text</option>
+            <option value="hex">Hexadecimal bytes</option>
+          </select>
+
+          <button class="btn primary" id="fairnessVerify" type="submit">Verify commitment</button>
+        </form>
+
+        <p class="hint" id="fairnessStatus" role="status" aria-live="polite">Waiting for a seed to verify.</p>
+<p class="hint">A match confirms only that the revealed seed produces this commitment using the selected encoding. It does not independently verify seed generation or winner selection.</p>
+        <div id="fairnessResult" hidden></div>
       </div>
     </div>
   </section>
@@ -1573,11 +1632,93 @@
     conn.click();
     setTimeout(function(){if(msg&&msg.classList.contains("err"))$("try").scrollIntoView({behavior:"smooth",block:"center"})},1500);
   });
+
+
+  /* Fairness Lab: local SHA-256 commitment verifier */
+  var fairnessForm=$("fairnessForm");
+  if(fairnessForm){
+    fairnessForm.addEventListener("submit",async function(e){
+      e.preventDefault();
+
+      var commitment=$("fairnessCommitment").value.trim().replace(/^0x/i,"").toLowerCase();
+      var seed=$("fairnessSeed").value;
+      var encoding=$("fairnessEncoding").value;
+      var status=$("fairnessStatus");
+      var result=$("fairnessResult");
+
+      result.hidden=false;
+      result.textContent="";
+      status.textContent="";
+
+      if(!/^[0-9a-f]{64}$/.test(commitment)){
+        status.textContent="Invalid commitment. Enter a 64-character SHA-256 hexadecimal hash.";
+        return;
+      }
+
+      if(!seed){
+        status.textContent="Enter the revealed seed first.";
+        return;
+      }
+
+      if(!encoding){
+        status.textContent="Select an encoding to test.";
+        return;
+      }
+
+      if(!window.crypto || !crypto.subtle){
+        status.textContent="SHA-256 verification requires a secure browser context (HTTPS or localhost).";
+        return;
+      }
+
+      var bytes;
+      if(encoding==="utf8"){
+        bytes=new TextEncoder().encode(seed);
+      }else{
+        var hex=seed.replace(/^0x/i,"").replace(/\s/g,"");
+        if(!/^(?:[0-9a-fA-F]{2})+$/.test(hex)){
+          status.textContent="Invalid hexadecimal seed. Use complete pairs of hexadecimal characters.";
+          return;
+        }
+        bytes=new Uint8Array(hex.match(/.{2}/g).map(function(pair){
+          return parseInt(pair,16);
+        }));
+      }
+
+      status.textContent="Calculating SHA-256 locally…";
+
+      try{
+        var digest=await crypto.subtle.digest("SHA-256",bytes);
+        var calculated=Array.from(new Uint8Array(digest)).map(function(b){
+          return b.toString(16).padStart(2,"0");
+        }).join("");
+
+        var matches=calculated===commitment;
+        var encodingLabel=encoding==="utf8"?"UTF-8 text":"Hexadecimal bytes";
+
+        result.textContent=
+          "Calculated SHA-256: "+calculated+
+          "\nPublished commitment: "+commitment+
+          "\nEncoding tested: "+encodingLabel+
+          "\n\n"+(matches
+            ?"MATCH — the revealed seed produces the published commitment using this encoding."
+            :"NO MATCH — the calculated hash does not match the published commitment using this encoding.");
+
+        status.textContent=matches
+          ?"Commitment verified for the selected encoding."
+          :"Commitment mismatch for the selected encoding.";
+      }catch(err){
+        status.textContent="Verification failed: "+err.message;
+      }
+    });
+  }
+
+
   /* active link while scrolling */
-  var spy=[].slice.call(document.querySelectorAll("[data-spy]")),tg={dashboard:$("dashboard"),games:$("games")};
+  var spy=[].slice.call(document.querySelectorAll("[data-spy]")),tg={dashboard:$("dashboard"),fairness:$("fairness"),games:$("games")};
   function onScroll(){
     var vh=window.innerHeight*.4,cur="top";
     if(tg.dashboard.getBoundingClientRect().top<vh)cur="dashboard";
+    if(tg.fairness.getBoundingClientRect().top<vh)cur="fairness";
     if(tg.games.getBoundingClientRect().top<vh)cur="games";
     spy.forEach(function(a){a.classList.toggle("on",a.getAttribute("data-spy")===cur)});
   }
